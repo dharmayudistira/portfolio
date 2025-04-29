@@ -1,5 +1,6 @@
 import BaseLayout from "@/components/layout/base-layout";
 import HeroSection from "./hero-section";
+import ServicesSection from "./services-section";
 import { Gap } from "@/components/ui";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <BaseLayout>
       <HeroSection />
       <Gap size="lg" />
+      <ServicesSection />
     </BaseLayout>
   );
 }

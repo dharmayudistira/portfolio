@@ -9,10 +9,10 @@ interface GapProps {
 }
 
 const Gap = ({ size = "md", pattern = "none" }: GapProps) => {
-  const sizeMap: Record<GapSize, number> = {
-    sm: 8,
-    md: 16,
-    lg: 24,
+  const sizeMap: Record<GapSize, string> = {
+    sm: "h-8",
+    md: "h-16",
+    lg: "h-24",
   };
 
   const patternMap: Record<GapPattern, string> = {
@@ -23,7 +23,11 @@ const Gap = ({ size = "md", pattern = "none" }: GapProps) => {
 
   return (
     <div
-      className={cn("border-t", `h-${sizeMap[size]}`, patternMap[pattern])}
+      className={cn(
+        "border-y w-full",
+        sizeMap[size],
+        patternMap[pattern]
+      )}
     />
   );
 };
