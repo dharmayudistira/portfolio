@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Code } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 const satoshi = localFont({
   src: "../../public/fonts/satoshi.otf",
@@ -25,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${satoshi.variable} ${firaCode.variable} antialiased`}
-      >
+      <body className={cn(satoshi.variable, firaCode.variable, "antialiased")}>
         {children}
       </body>
     </html>

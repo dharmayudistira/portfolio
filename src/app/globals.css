@@ -6,12 +6,12 @@
   --font-fira-code: 'Fira Code', monospace;
 
   /* Colors */
-  --color-primary: 14 165 233;
-  --color-primary-foreground: 255 255 255;
-  --color-secondary: 228 228 231;
-  --color-secondary-foreground: 39 39 42;
   --color-background: 3 7 18;
   --color-foreground: 24 24 27;
+
+  --color-primary: oklch(62.3% 0.214 259.815);
+  --color-primary-foreground: oklch(55.4% 0.046 257.417);
+  --color-secondary: oklch(27.4% 0.006 286.033);
 }
 
 body {
@@ -21,28 +21,33 @@ body {
 }
 
 @layer utilities {
-  .bg-background {
-    background-color: rgb(var(--color-background));
-  }
-  .text-foreground {
-    color: rgb(var(--color-foreground));
-  }
   .text-primary {
-    color: rgb(var(--color-primary));
+    color: var(--color-primary);
   }
-  .bg-primary {
-    background-color: rgb(var(--color-primary));
+
+  .text-primary-foreground {
+    color: var(--color-primary-foreground);
   }
+
   .text-secondary {
-    color: rgb(var(--color-secondary));
+    color: var(--color-secondary);
   }
-  .bg-secondary {
-    background-color: rgb(var(--color-secondary));
+
+  .diagonal-pattern {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--color-secondary) 0,
+      var(--color-secondary) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+    border-left: 1.5px solid var(--color-secondary);
+    border-right: 1.5px solid var(--color-secondary);
   }
-  .font-satoshi {
-    font-family: var(--font-satoshi);
-  }
-  .font-fira-code {
-    font-family: var(--font-fira-code);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-secondary);
   }
 }
