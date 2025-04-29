@@ -62,32 +62,6 @@ body {
     );
     background-size: 8px 8px;
   }
-
-  .marquee-skills {
-    overflow: hidden;
-    user-select: none;
-    display: flex;
-
-    --gap: 20px;
-    gap: var(--gap);
-  }
-
-  .marquee-skills ul {
-    list-style: none;
-    display: flex;
-    min-width: 100%;
-    flex-shrink: 0;
-    justify-content: space-between;
-    gap: var(--gap);
-    align-items: center;
-    animation: scroll 20s linear infinite;
-  }
-
-  @keyframes scroll {
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
 }
 
 @layer base {
