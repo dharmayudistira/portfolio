@@ -6,7 +6,7 @@ const Header = () => {
       <div className="w-full py-4 container flex justify-between items-center">
         <p className="text-2xl text-white font-bold">Dharma&apos;s Portfolio</p>
 
-        <div className="flex gap-4 text-primary-foreground">
+        <div className="flex gap-4 text-primary font-code">
           <Link href="/">Home</Link>
           <Link href="/playgrounds">Playgrounds</Link>
           <Link href="/blogs">Blogs</Link>

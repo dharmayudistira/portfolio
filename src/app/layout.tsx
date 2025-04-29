@@ -15,7 +15,7 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Dharma",
+  title: "Dharma | Portfolio",
   description: "Dharma's Personal Portfolio",
 };
 

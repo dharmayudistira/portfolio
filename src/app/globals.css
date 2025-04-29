@@ -9,9 +9,9 @@
   --color-background: 3 7 18;
   --color-foreground: 24 24 27;
 
-  --color-primary: oklch(62.3% 0.214 259.815);
-  --color-primary-foreground: oklch(55.4% 0.046 257.417);
-  --color-secondary: oklch(27.4% 0.006 286.033);
+  --color-primary: #66D1FF;
+  --color-secondary: #42454E;
+  --color-secondary-light: #616570;
 }
 
 body {
@@ -25,12 +25,16 @@ body {
     color: var(--color-primary);
   }
 
-  .text-primary-foreground {
-    color: var(--color-primary-foreground);
+  .text-secondary-light {
+    color: var(--color-secondary-light);
   }
 
   .text-secondary {
     color: var(--color-secondary);
+  }
+
+  .font-code {
+    font-family: var(--font-fira-code);
   }
 
   .diagonal-pattern {
