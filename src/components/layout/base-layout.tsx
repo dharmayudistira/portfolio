@@ -18,7 +18,7 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
         <section className="w-full">{children}</section>
 
         {/* Right diagonal pattern */}
-        <div className="w-8 diagonal-pattern" />
+        <div className="w-8 diagonal-pattern border-x" />
       </div>
 
       {/* Screen Size */}

@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <BaseLayout>
       <HeroSection />
-      <Gap className="h-24"/>
+      <Gap size="lg" />
     </BaseLayout>
   );
 }

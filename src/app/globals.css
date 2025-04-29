@@ -45,8 +45,14 @@ body {
       transparent 1px,
       transparent 7px
     );
-    border-left: 1.5px solid var(--color-secondary);
-    border-right: 1.5px solid var(--color-secondary);
+  }
+
+  .dots-pattern {
+    background-image: radial-gradient(
+      var(--color-secondary) 1px,
+      transparent 1px
+    );
+    background-size: 8px 8px;
   }
 }
 
