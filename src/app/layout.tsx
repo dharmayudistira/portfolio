@@ -25,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(satoshi.variable, firaCode.variable, "antialiased")}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(satoshi.variable, firaCode.variable,)} suppressHydrationWarning>
         {children}
       </body>
     </html>
