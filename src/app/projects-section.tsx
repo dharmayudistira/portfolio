@@ -1,5 +1,15 @@
 import { Card, Gap } from "@/components/ui";
 
+const PROJECTS = [
+  {
+    title: "KickAvenue",
+    stacks: ["Flutter", "Dart", "Riverpod"],
+    link: "https://play.google.com/store/apps/details?id=com.kickavenue.androidshop&pcampaignid=web_share",
+    projectImageUrl: "/images/kick-avenue.webp",
+    showcaseAssetUrl: "/images/kick-avenue-showcase.png",
+  },
+];
+
 const ProjectsSection = () => {
   return (
     <section className="w-full flex flex-col">
@@ -22,7 +32,7 @@ const ProjectsSection = () => {
 
             <div className="w-full border-b">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
-                Things I&apos;m Proud Of.
+                Things I&apos;ve Proud Of.
               </p>
             </div>
           </div>
@@ -32,35 +42,16 @@ const ProjectsSection = () => {
       <Gap size="sm" />
 
       <div className="bg-secondary grid grid-cols-12 p-2 gap-2">
-        <Card.Project
-          title="Healthify - Telemedicine Platform"
-          stacks={["React", "TypeScript", "Node.js", "WebRTC", "Tailwind CSS"]}
-          link="https://healthify.demo"
-        />
-
-        <Card.Project
-          title="EcoTrack - Carbon Footprint Monitor"
-          stacks={["Next.js", "MongoDB", "GraphQL", "D3.js", "Material UI"]}
-          link="https://ecotrack.demo"
-        />
-
-        <Card.Project
-          title="CryptoVault - DeFi Dashboard"
-          stacks={["React", "Solidity", "Web3.js", "Ethers.js", "Chakra UI"]}
-          link="https://cryptovault.demo"
-        />
-
-        <Card.Project
-          title="TaskMaster - Project Management Tool"
-          stacks={[
-            "Next.js",
-            "PostgreSQL",
-            "Prisma",
-            "Socket.io",
-            "Tailwind CSS",
-          ]}
-          link="https://taskmaster.demo"
-        />
+        {PROJECTS.map((project) => (
+          <Card.Project
+            key={project.title}
+            title={project.title}
+            stacks={project.stacks}
+            link={project.link}
+            projectImageUrl={project.projectImageUrl}
+            showcaseAssetUrl={project.showcaseAssetUrl}
+          />
+        ))}
       </div>
     </section>
   );

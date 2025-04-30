@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 
 interface BaseCardProps {
@@ -18,6 +19,8 @@ interface TestimonyCardProps extends BaseCardProps {
 }
 
 interface ProjectCardProps extends BaseCardProps {
+  projectImageUrl: string;
+  showcaseAssetUrl: string;
   title: string;
   stacks: string[];
   link?: string;
@@ -87,7 +90,14 @@ const Testimony = ({
 };
 Testimony.displayName = "Card.Testimony";
 
-const Project = ({ title, stacks, link, className }: ProjectCardProps) => {
+const Project = ({
+  title,
+  stacks,
+  link,
+  projectImageUrl,
+  showcaseAssetUrl,
+  className,
+}: ProjectCardProps) => {
   const baseStyles = "bg-color rounded-lg border";
 
   return (
@@ -98,7 +108,13 @@ const Project = ({ title, stacks, link, className }: ProjectCardProps) => {
     >
       <div className="grid grid-cols-6 border-b">
         <div className="col-span-1 p-4 flex justify-center items-center border-r">
-          <div className="w-16 h-16 rounded-full border dots-pattern" />
+          <Image
+            src={projectImageUrl}
+            alt={title}
+            width={64}
+            height={64}
+            className="rounded-full border"
+          />
         </div>
 
         <div className="col-span-5 p-4 flex items-center">
@@ -118,7 +134,15 @@ const Project = ({ title, stacks, link, className }: ProjectCardProps) => {
       </div>
 
       <div className="mt-8 w-full pl-4">
-        <div className="w-full h-72 border-l border-t rounded-tl-lg dots-pattern" />
+        <div className="w-full h-72 border-l border-t rounded-tl-lg overflow-hidden">
+          <Image
+            src={showcaseAssetUrl}
+            alt={title}
+            width={1000}
+            height={1000}
+            className="w-full h-full object-top-left object-cover img-zoom"
+          />
+        </div>
       </div>
     </Link>
   );

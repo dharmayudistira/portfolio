@@ -14,6 +14,7 @@ export default function Home() {
       <TestimoniesSection />
       <Gap size="lg" />
       <ProjectsSection />
+      <Gap size="lg" />
     </BaseLayout>
   );
 }
