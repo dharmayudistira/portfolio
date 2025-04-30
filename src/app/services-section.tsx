@@ -22,7 +22,7 @@ const ServicesSection = () => {
 
             <div className="w-full border-b">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
-                This is What I Do
+                This is What I Do.  
               </p>
             </div>
           </div>
