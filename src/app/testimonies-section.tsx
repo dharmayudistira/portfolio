@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, Gap } from "@/components/ui";
 import Image from "next/image";
 

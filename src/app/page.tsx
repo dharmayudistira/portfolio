@@ -3,7 +3,9 @@ import HeroSection from "./hero-section";
 import ServicesSection from "./services-section";
 import TestimoniesSection from "./testimonies-section";
 import ProjectsSection from "./projects-section";
+import BlogsSection from "./blogs-section";
 import { Gap } from "@/components/ui";
+
 export default function Home() {
   return (
     <BaseLayout>
@@ -15,6 +17,7 @@ export default function Home() {
       <Gap size="lg" />
       <ProjectsSection />
       <Gap size="lg" />
+      <BlogsSection />
     </BaseLayout>
   );
 }

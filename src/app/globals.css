@@ -45,6 +45,14 @@ body {
     background: var(--color-foreground);
   }
 
+  .hover\:bg-color\/80:hover {
+    background-color: rgb(var(--color-background) / 0.8);
+  }
+
+  .hover\:bg-secondary\/80:hover {
+    background-color: rgb(var(--color-foreground) / 0.8);
+  }
+
   .diagonal-pattern {
     background-image: repeating-linear-gradient(
       135deg,

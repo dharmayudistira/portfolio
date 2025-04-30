@@ -1,6 +1,9 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from ".";
 
 interface BaseCardProps {
   className?: string;
@@ -19,11 +22,19 @@ interface TestimonyCardProps extends BaseCardProps {
 }
 
 interface ProjectCardProps extends BaseCardProps {
-  projectImageUrl: string;
-  showcaseAssetUrl: string;
+  projectImageUrl?: string;
+  showcaseAssetUrl?: string;
   title: string;
   stacks: string[];
   link?: string;
+}
+
+interface BlogCardProps extends BaseCardProps {
+  title: string;
+  description: string;
+  date: string;
+  link: string;
+  imageUrl?: string;
 }
 
 interface DefaultCardProps extends BaseCardProps {
@@ -108,13 +119,17 @@ const Project = ({
     >
       <div className="grid grid-cols-6 border-b">
         <div className="col-span-1 p-4 flex justify-center items-center border-r">
-          <Image
-            src={projectImageUrl}
-            alt={title}
-            width={64}
-            height={64}
-            className="rounded-full border"
-          />
+          {projectImageUrl ? (
+            <Image
+              src={projectImageUrl}
+              alt={title}
+              width={64}
+              height={64}
+              className="rounded-full border"
+            />
+          ) : (
+            <div className="w-16 h-16 rounded-full border dots-pattern" />
+          )}
         </div>
 
         <div className="col-span-5 p-4 flex items-center">
@@ -134,14 +149,23 @@ const Project = ({
       </div>
 
       <div className="mt-8 w-full pl-4">
-        <div className="w-full h-72 border-l border-t rounded-tl-lg overflow-hidden">
-          <Image
-            src={showcaseAssetUrl}
-            alt={title}
-            width={1000}
-            height={1000}
-            className="w-full h-full object-top-left object-cover img-zoom"
-          />
+        <div
+          className={cn(
+            "w-full h-72 border-l border-t rounded-tl-lg overflow-hidden",
+            {
+              "dots-pattern": !showcaseAssetUrl,
+            }
+          )}
+        >
+          {showcaseAssetUrl && (
+            <Image
+              src={showcaseAssetUrl}
+              alt={title}
+              width={1000}
+              height={1000}
+              className="w-full h-full object-top-left object-cover img-zoom"
+            />
+          )}
         </div>
       </div>
     </Link>
@@ -149,7 +173,44 @@ const Project = ({
 };
 Project.displayName = "Card.Project";
 
+const Blog = ({ title, description, date, link, imageUrl }: BlogCardProps) => {
+  return (
+    <div className="grid grid-cols-12 p-4 border-b">
+      <div className="col-span-4">
+        <p className="text-primary font-bold text-2xl">{title}</p>
+      </div>
+
+      <div className="col-span-5 flex flex-col gap-16 justify-between">
+        <div className="flex flex-col gap-4">
+          <p className="text-secondary-light font-code text-sm">{`[ ${date} ]`}</p>
+          <p className="text-white">{description}</p>
+        </div>
+
+        <Link href={link} target="_blank">
+          <Button variant="secondary">Read More</Button>
+        </Link>
+      </div>
+
+      <div className="col-span-3">
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={title}
+            width={1000}
+            height={1000}
+            className="w-full h-full object-cover rounded-lg"
+          />
+        ) : (
+          <div className="w-full h-full dots-pattern rounded-lg" />
+        )}
+      </div>
+    </div>
+  );
+};
+Blog.displayName = "Card.Blog";
+
 Card.Service = Service;
 Card.Testimony = Testimony;
 Card.Project = Project;
+Card.Blog = Blog;
 export default Card;

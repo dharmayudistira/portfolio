@@ -1,4 +1,7 @@
-import { Card, Gap } from "@/components/ui";
+"use client";
+
+import Card from "@/components/ui/card";
+import { Gap } from "@/components/ui";
 
 const ServicesSection = () => {
   return (
