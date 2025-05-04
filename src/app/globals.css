@@ -78,6 +78,31 @@ body {
   .img-zoom:hover {
     transform: scale(1.1);
   }
+
+  .border-across {
+    position: relative;
+    border-bottom: 1px solid var(--color-secondary);
+  }
+
+  .border-across::before {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: -100vw;
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-secondary);
+  }
+
+  .border-across::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: -100vw;
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-secondary);
+  }
 }
 
 @layer base {

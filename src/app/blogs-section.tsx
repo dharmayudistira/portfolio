@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, Gap } from "@/components/ui";
+import { cn } from "@/lib/utils";
 
 const DUMMY_BLOGS = [
   {
@@ -43,13 +44,13 @@ const BlogsSection = () => {
 
         <div className="col-span-8">
           <div className="w-full h-full flex flex-col justify-end">
-            <div className="h-12 w-full content-end border-b">
+            <div className="h-12 w-full content-end border-across">
               <p className="text-secondary px-2 font-code tracking-wide text-sm">
                 text-3xl font-bold
               </p>
             </div>
 
-            <div className="w-full border-b">
+            <div className="w-full border-across">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
                 Things Worth Sharing.
               </p>
@@ -60,9 +61,10 @@ const BlogsSection = () => {
 
       <Gap size="sm" pattern="diagonal" />
 
-      <div className="w-full space-y-4">
+      <div className="w-full space-y-4 border-across">
         {DUMMY_BLOGS.map((blog, index) => (
           <Card.Blog
+            className={cn(index !== DUMMY_BLOGS.length - 1 && "border-b")}
             key={index}
             title={blog.title}
             description={blog.description}

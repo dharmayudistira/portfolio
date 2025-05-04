@@ -7,7 +7,7 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const screenSize = useScreenSize();
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center border-b">
+    <div className="relative w-full h-full flex flex-col items-center border-b overflow-hidden">
       <Header />
 
       <div className="flex w-full container items-stretch">
@@ -15,7 +15,7 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-8 diagonal-pattern border-x" />
 
         {/* Content */}
-        <section className="w-full">{children}</section>
+        <div className="w-full">{children}</div>
 
         {/* Right diagonal pattern */}
         <div className="w-8 diagonal-pattern border-x" />

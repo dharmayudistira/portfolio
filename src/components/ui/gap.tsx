@@ -24,7 +24,7 @@ const Gap = ({ size = "md", pattern = "none" }: GapProps) => {
   return (
     <div
       className={cn(
-        "border-y w-full",
+        "border-across w-full",
         sizeMap[size],
         patternMap[pattern]
       )}

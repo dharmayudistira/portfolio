@@ -5,6 +5,7 @@ import TestimoniesSection from "./testimonies-section";
 import ProjectsSection from "./projects-section";
 import BlogsSection from "./blogs-section";
 import { Gap } from "@/components/ui";
+import Footer from "@/components/layout/footer";
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
       <ProjectsSection />
       <Gap size="lg" />
       <BlogsSection />
+      <Gap size="lg" pattern="diagonal" />
+      <Gap size="sm" />
+      <Footer />
     </BaseLayout>
   );
 }

@@ -26,13 +26,13 @@ const ProjectsSection = () => {
 
         <div className="col-span-8">
           <div className="w-full h-full flex flex-col justify-end">
-            <div className="h-12 w-full content-end border-b">
+            <div className="h-12 w-full content-end border-across">
               <p className="text-secondary px-2 font-code tracking-wide text-sm">
                 text-3xl font-bold
               </p>
             </div>
 
-            <div className="w-full border-b">
+            <div className="w-full border-across">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
                 Things I&apos;ve Proud Of.
               </p>
@@ -43,7 +43,7 @@ const ProjectsSection = () => {
 
       <Gap size="sm" />
 
-      <div className="bg-secondary grid grid-cols-12 p-2 gap-2">
+      <div className="bg-secondary grid grid-cols-12 p-2 gap-2 border-across">
         {PROJECTS.map((project) => (
           <Card.Project
             key={project.title}

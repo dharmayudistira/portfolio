@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, Gap } from "@/components/ui";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 interface Testimonial {
@@ -57,7 +58,7 @@ const testimonials: Testimonial[] = [
 const TestimoniesSection = () => {
   return (
     <section className="w-full flex flex-col">
-      <div className="w-full grid grid-cols-1 md:grid-cols-12">
+      <div className="w-full grid grid-cols-12">
         <div className="col-span-1 md:col-span-4">
           <div className="h-full w-full content-end border-r">
             <p className="text-secondary px-2 font-code tracking-wide text-sm">
@@ -66,15 +67,15 @@ const TestimoniesSection = () => {
           </div>
         </div>
 
-        <div className="col-span-1 md:col-span-8">
+        <div className="col-span-8">
           <div className="w-full h-full flex flex-col justify-end">
-            <div className="h-12 w-full content-end border-b">
+            <div className="h-12 w-full content-end border-across">
               <p className="text-secondary px-2 font-code tracking-wide text-sm">
                 text-3xl font-bold
               </p>
             </div>
 
-            <div className="w-full border-b">
+            <div className="w-full border-across">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
                 Words from Those I&apos;ve Worked With.
               </p>
@@ -85,8 +86,8 @@ const TestimoniesSection = () => {
 
       <Gap size="sm" pattern="diagonal" />
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-0">
-        <div className="col-span-1 md:col-span-4 p-4 border-r flex justify-center items-center">
+      <div className="grid grid-cols-12">
+        <div className="col-span-4 p-4 border-r border-across flex justify-center items-center">
           <Image
             src="/icons/quote.png"
             alt="Quotation Mark"
@@ -99,13 +100,10 @@ const TestimoniesSection = () => {
         {testimonials.map((testimonial, index) => (
           <Card.Testimony
             key={`${testimonial.name}-${index}`}
-            className={`
-              ${index % 2 === 0 ? "bg-secondary" : ""}
-              ${index !== testimonials.length - 1 ? "border-r" : ""}
-              ${index >= 3 ? "border-t" : ""}
-              ${index === 4 ? "border-b" : ""}
-              ${index === testimonials.length - 1 ? "border-r" : ""}
-            `}
+            className={cn(
+              `${index === 2 || index === 5 ? "border-across border-r" : ""}`,
+              `${index === 0 || index === 3 || index === 6 ? "border-r" : ""}`
+            )}
             name={testimonial.name}
             company={testimonial.company}
             review={testimonial.review}

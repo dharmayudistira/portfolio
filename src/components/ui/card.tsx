@@ -173,9 +173,9 @@ const Project = ({
 };
 Project.displayName = "Card.Project";
 
-const Blog = ({ title, description, date, link, imageUrl }: BlogCardProps) => {
+const Blog = ({ title, description, date, link, imageUrl, className }: BlogCardProps) => {
   return (
-    <div className="grid grid-cols-12 p-4 border-b">
+    <div className={cn("grid grid-cols-12 p-4", className)}>
       <div className="col-span-4">
         <p className="text-primary font-bold text-2xl">{title}</p>
       </div>
