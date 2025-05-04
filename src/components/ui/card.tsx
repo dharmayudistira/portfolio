@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from ".";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 interface BaseCardProps {
   className?: string;
@@ -112,11 +113,7 @@ const Project = ({
   const baseStyles = "bg-color rounded-lg border";
 
   return (
-    <Link
-      href={link ?? ""}
-      target="_blank"
-      className={cn(baseStyles, "col-span-6 flex flex-col", className)}
-    >
+    <div className={cn(baseStyles, "col-span-6 flex flex-col", className)}>
       <div className="grid grid-cols-6 border-b">
         <div className="col-span-1 p-4 flex justify-center items-center border-r">
           {projectImageUrl ? (
@@ -133,7 +130,14 @@ const Project = ({
         </div>
 
         <div className="col-span-5 p-4 flex items-center">
-          <p className="text-primary font-bold text-2xl">{title}</p>
+          <Link
+            href={link ?? ""}
+            target="_blank"
+            className="inline-flex gap-2"
+          >
+            <p className="text-primary font-bold text-2xl hover:underline">{title}</p>
+            <ExternalLinkIcon className="w-3 h-3 text-primary" />
+          </Link>
         </div>
       </div>
 
@@ -168,12 +172,19 @@ const Project = ({
           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 Project.displayName = "Card.Project";
 
-const Blog = ({ title, description, date, link, imageUrl, className }: BlogCardProps) => {
+const Blog = ({
+  title,
+  description,
+  date,
+  link,
+  imageUrl,
+  className,
+}: BlogCardProps) => {
   return (
     <div className={cn("grid grid-cols-12 p-4", className)}>
       <div className="col-span-4">

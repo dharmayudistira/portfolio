@@ -54,13 +54,16 @@ body {
   }
 
   .diagonal-pattern {
+    --pattern-fg: var(--color-secondary);
     background-image: repeating-linear-gradient(
-      135deg,
-      var(--color-secondary) 0,
-      var(--color-secondary) 1px,
-      transparent 1px,
-      transparent 7px
+      315deg,
+      var(--pattern-fg) 0,
+      var(--pattern-fg) 0.5px,
+      transparent 0,
+      transparent 50%
     );
+    background-size: 10px 10px;
+    background-attachment: fixed;
   }
 
   .dots-pattern {

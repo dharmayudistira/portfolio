@@ -1,10 +1,12 @@
 "use client";
 
 import { useScreenSize } from "@/hooks";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import Header from "./header";
 
 const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const screenSize = useScreenSize();
+  useSmoothScroll();
 
   return (
     <div className="relative w-full h-full flex flex-col items-center border-b overflow-hidden">
