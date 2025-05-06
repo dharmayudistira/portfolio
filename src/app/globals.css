@@ -82,12 +82,17 @@ body {
     transform: scale(1.1);
   }
 
-  .border-across {
+  .border-b-across {
     position: relative;
     border-bottom: 1px solid var(--color-secondary);
   }
 
-  .border-across::before {
+  .border-t-across {
+    position: relative;
+    border-top: 1px solid var(--color-secondary);
+  }
+
+  .border-b-across::before {
     content: "";
     position: absolute;
     bottom: -1px;
@@ -97,10 +102,30 @@ body {
     background-color: var(--color-secondary);
   }
 
-  .border-across::after {
+  .border-t-across::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -100vw;
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-secondary);
+  }
+
+  .border-b-across::after {
     content: "";
     position: absolute;
     bottom: -1px;
+    right: -100vw;
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-secondary);
+  }
+
+  .border-t-across::after {
+    content: "";
+    position: absolute;
+    top: -1px;
     right: -100vw;
     width: 100vw;
     height: 1px;

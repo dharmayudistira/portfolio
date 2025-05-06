@@ -1,16 +1,7 @@
 "use client";
 
 import { Card, Gap } from "@/components/ui";
-
-const PROJECTS = [
-  {
-    title: "KickAvenue",
-    stacks: ["Flutter", "Dart", "Riverpod"],
-    link: "https://play.google.com/store/apps/details?id=com.kickavenue.androidshop&pcampaignid=web_share",
-    projectImageUrl: "/images/kick-avenue.webp",
-    showcaseAssetUrl: "/images/kick-avenue-showcase.png",
-  },
-];
+import { PROJECTS } from "@/lib/projects";
 
 const ProjectsSection = () => {
   return (
@@ -26,13 +17,13 @@ const ProjectsSection = () => {
 
         <div className="col-span-8">
           <div className="w-full h-full flex flex-col justify-end">
-            <div className="h-12 w-full content-end border-across">
+            <div className="h-12 w-full content-end border-b-across">
               <p className="text-secondary px-2 font-code tracking-wide text-sm">
                 text-3xl font-bold
               </p>
             </div>
 
-            <div className="w-full border-across">
+            <div className="w-full border-b-across">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
                 Things I&apos;ve Proud Of.
               </p>
@@ -43,10 +34,10 @@ const ProjectsSection = () => {
 
       <Gap size="sm" />
 
-      <div className="bg-secondary grid grid-cols-12 p-2 gap-2 border-across">
-        {PROJECTS.map((project) => (
+      <div className="bg-secondary grid grid-cols-12 p-2 gap-2 border-b-across">
+        {PROJECTS.slice(0, 4).map((project) => (
           <Card.Project
-            key={project.title}
+            key={project.key}
             title={project.title}
             stacks={project.stacks}
             link={project.link}

@@ -1,16 +1,38 @@
 import BaseLayout from "@/components/layout/base-layout";
-import HeroSection from "./hero-section";
 import ServicesSection from "./services-section";
 import TestimoniesSection from "./testimonies-section";
 import ProjectsSection from "./projects-section";
 import BlogsSection from "./blogs-section";
 import { Gap } from "@/components/ui";
 import Footer from "@/components/layout/footer";
+import HeroSection from "@/components/layout/hero-section";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
-export default function Home() {
+export default function Page() {
   return (
     <BaseLayout>
-      <HeroSection />
+      <HeroSection
+        title="Building Scalable Apps for Web, Mobile & Desktop."
+        description={
+          <p className="text-secondary-light text-xl">
+            Hi, I&apos;m{" "}
+            <span className="text-primary font-bold">Dharma Yudistira</span>—a
+            product engineer focused on seamless digital experiences across web
+            and mobile. <br /> I currently work at{" "}
+            <span className="text-primary font-bold">
+              <Link
+                href="https://zero-one-group.com"
+                target="_blank"
+                className="inline-flex items-center gap-2 hover:underline"
+              >
+                Zero One Group
+                <ExternalLinkIcon className="w-4 h-4" />
+              </Link>
+            </span>
+          </p>
+        }
+      />
       <Gap size="lg" />
       <ServicesSection />
       <Gap size="lg" />

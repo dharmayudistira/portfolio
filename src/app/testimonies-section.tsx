@@ -69,13 +69,13 @@ const TestimoniesSection = () => {
 
         <div className="col-span-8">
           <div className="w-full h-full flex flex-col justify-end">
-            <div className="h-12 w-full content-end border-across">
+            <div className="h-12 w-full content-end border-b-across">
               <p className="text-secondary px-2 font-code tracking-wide text-sm">
                 text-3xl font-bold
               </p>
             </div>
 
-            <div className="w-full border-across">
+            <div className="w-full border-b-across">
               <p className="h-36 content-end text-white text-3xl font-bold px-2">
                 Words from Those I&apos;ve Worked With.
               </p>
@@ -87,7 +87,7 @@ const TestimoniesSection = () => {
       <Gap size="sm" pattern="diagonal" />
 
       <div className="grid grid-cols-12">
-        <div className="col-span-4 p-4 border-r border-across flex justify-center items-center">
+        <div className="col-span-4 p-4 border-r border-b-across flex justify-center items-center">
           <Image
             src="/icons/quote.png"
             alt="Quotation Mark"
@@ -101,7 +101,7 @@ const TestimoniesSection = () => {
           <Card.Testimony
             key={`${testimonial.name}-${index}`}
             className={cn(
-              `${index === 2 || index === 5 ? "border-across border-r" : ""}`,
+              `${index === 2 || index === 5 ? "border-b-across border-r" : ""}`,
               `${index === 0 || index === 3 || index === 6 ? "border-r" : ""}`
             )}
             name={testimonial.name}
@@ -109,6 +109,16 @@ const TestimoniesSection = () => {
             review={testimonial.review}
           />
         ))}
+
+        <div className="col-span-4 p-4 border-b-across flex justify-center items-center">
+          <Image
+            src="/icons/quote.png"
+            alt="Quotation Mark"
+            width={100}
+            height={100}
+            priority
+          />
+        </div>
       </div>
     </section>
   );
