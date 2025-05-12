@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { Card, Gap } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -55,73 +56,95 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const TestimoniesSection = () => {
-  return (
-    <section className="w-full flex flex-col">
-      <div className="w-full grid grid-cols-12">
-        <div className="col-span-1 md:col-span-4">
-          <div className="h-full w-full content-end border-r">
-            <p className="text-secondary px-2 font-code tracking-wide text-sm">
-              [ testimonies section ]
-            </p>
-          </div>
+const QuoteImage = memo(() => (
+  <Image
+    src="/icons/quote.png"
+    alt="Quotation Mark"
+    width={100}
+    height={100}
+    priority
+    quality={90}
+    className="object-contain"
+    sizes="(max-width: 768px) 50px, 100px"
+  />
+));
+
+QuoteImage.displayName = "QuoteImage";
+
+const TestimonialCard = memo(
+  ({ testimonial, index }: { testimonial: Testimonial; index: number }) => (
+    <Card.Testimony
+      key={`${testimonial.name}-${index}`}
+      className={cn(
+        `${index === 2 || index === 5 ? "border-b-across border-r" : ""}`,
+        `${index === 0 || index === 3 || index === 6 ? "border-r" : ""}`
+      )}
+      name={testimonial.name}
+      company={testimonial.company}
+      review={testimonial.review}
+    />
+  )
+);
+
+TestimonialCard.displayName = "TestimonialCard";
+
+const SectionHeader = memo(() => (
+  <div className="w-full grid grid-cols-12">
+    <div className="col-span-1 md:col-span-4">
+      <div className="h-full w-full content-end border-r">
+        <p className="text-secondary px-2 font-code tracking-wide text-sm">
+          [ testimonies section ]
+        </p>
+      </div>
+    </div>
+
+    <div className="col-span-8">
+      <div className="w-full h-full flex flex-col justify-end">
+        <div className="h-12 w-full content-end border-b-across">
+          <p className="text-secondary px-2 font-code tracking-wide text-sm">
+            text-3xl font-bold
+          </p>
         </div>
 
-        <div className="col-span-8">
-          <div className="w-full h-full flex flex-col justify-end">
-            <div className="h-12 w-full content-end border-b-across">
-              <p className="text-secondary px-2 font-code tracking-wide text-sm">
-                text-3xl font-bold
-              </p>
-            </div>
-
-            <div className="w-full border-b-across">
-              <p className="h-36 content-end text-white text-3xl font-bold px-2">
-                Words from Those I&apos;ve Worked With.
-              </p>
-            </div>
-          </div>
+        <div className="w-full border-b-across">
+          <p className="h-36 content-end text-white text-3xl font-bold px-2">
+            Words from Those I&apos;ve Worked With.
+          </p>
         </div>
       </div>
+    </div>
+  </div>
+));
 
+SectionHeader.displayName = "SectionHeader";
+
+const TestimoniesSection = memo(() => {
+  return (
+    <section className="w-full flex flex-col">
+      <SectionHeader />
       <Gap size="sm" pattern="diagonal" />
 
       <div className="grid grid-cols-12">
         <div className="col-span-4 p-4 border-r border-b-across flex justify-center items-center">
-          <Image
-            src="/icons/quote.png"
-            alt="Quotation Mark"
-            width={100}
-            height={100}
-            priority
-          />
+          <QuoteImage />
         </div>
 
         {testimonials.map((testimonial, index) => (
-          <Card.Testimony
+          <TestimonialCard
             key={`${testimonial.name}-${index}`}
-            className={cn(
-              `${index === 2 || index === 5 ? "border-b-across border-r" : ""}`,
-              `${index === 0 || index === 3 || index === 6 ? "border-r" : ""}`
-            )}
-            name={testimonial.name}
-            company={testimonial.company}
-            review={testimonial.review}
+            testimonial={testimonial}
+            index={index}
           />
         ))}
 
         <div className="col-span-4 p-4 border-b-across flex justify-center items-center">
-          <Image
-            src="/icons/quote.png"
-            alt="Quotation Mark"
-            width={100}
-            height={100}
-            priority
-          />
+          <QuoteImage />
         </div>
       </div>
     </section>
   );
-};
+});
+
+TestimoniesSection.displayName = "TestimoniesSection";
 
 export default TestimoniesSection;

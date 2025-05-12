@@ -3,9 +3,12 @@
 import { useScreenSize } from "@/hooks";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import Header from "./header";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const screenSize = useScreenSize();
+  const pathname = usePathname();
   useSmoothScroll();
 
   return (
@@ -17,7 +20,18 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-8 diagonal-pattern border-x" />
 
         {/* Content */}
-        <div className="w-full">{children}</div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={pathname}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="w-full"
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Right diagonal pattern */}
         <div className="w-8 diagonal-pattern border-x" />
