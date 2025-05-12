@@ -38,8 +38,8 @@ const BlogsSection = () => {
       <div className="w-full space-y-4 border-b-across">
         {BLOGS.map((blog, index) => (
           <Card.Blog
+            key={blog.id}
             className={cn(index !== BLOGS.length - 1 && "border-b")}
-            key={index}
             title={blog.title}
             description={blog.description}
             date={blog.date}

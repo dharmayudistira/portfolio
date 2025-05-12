@@ -45,16 +45,9 @@ const ProjectList = () => {
             })}
           >
             <p className="text-primary font-bold text-lg">{project.title}</p>
-            <div className="w-full flex overflow-y-auto gap-x-4">
-              {project.stacks.map((stack) => (
-                <p
-                  key={stack}
-                  className="text-secondary-light font-code text-sm"
-                >
-                  {stack}
-                </p>
-              ))}
-            </div>
+            <p className="text-secondary-light font-code text-xs">
+              {project.description}
+            </p>
           </div>
         </div>
       ))}
