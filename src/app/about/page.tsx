@@ -1,0 +1,18 @@
+import BaseLayout from "@/components/layout/base-layout";
+import { Gap, TechStackRunner } from "@/components/ui";
+import HeroSection from "./hero-section";
+import ExperienceSection from "./experience-section";
+
+export default function Page() {
+  return (
+    <BaseLayout>
+      <HeroSection />
+      <Gap size="sm" />
+      <TechStackRunner />
+      <Gap size="sm" />
+      <ExperienceSection />
+      <Gap size="sm" />
+      <Gap size="lg" pattern="dots" />
+    </BaseLayout>
+  );
+}

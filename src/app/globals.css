@@ -131,6 +131,60 @@ body {
     height: 1px;
     background-color: var(--color-secondary);
   }
+
+  .text-stack-runner {
+    width: 100%;
+    height: var(--slider-height);
+    margin-inline: auto; 
+    position: relative;
+    overflow: hidden;
+    padding: 1px;
+    mask-image: linear-gradient(to right, transparent, var(--color-secondary) 20%, var(--color-secondary) 80%, transparent);
+  }
+
+  .text-stack-runner:hover .text-stack-runner-item {
+    animation-play-state: paused;
+}
+
+  .text-stack-runner-item {
+    width: var(--slider-item-width);
+    height: var(--slider-item-height);
+    position: absolute;
+    left: max(calc(var(--slider-item-width) * var(--slider-item-count)), 100%);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px dashed var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    animation-name: scrollLeft;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(20s / var(--slider-item-count) * (var(--item-number) - 1) * -1);
+  }
+
+  .text-stack-runner-item:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-primary);
+  }
+
+  .text-stack-runner-item:hover p {
+    color: var(--color-primary);
+    transition: color 0.3s ease-in-out;
+  }
+
+  .text-stack-runner-item:hover > *:first-child {
+    color: var(--color-primary) !important;
+    transition: color 0.3s ease-in-out;
+  }
+}
+
+@keyframes scrollLeft {
+  to {
+    left: calc(var(--slider-item-width) * -1);
+  }
 }
 
 @layer base {

@@ -24,7 +24,7 @@ const navItemVariants = {
 const ActiveStateOverlay = memo(() => (
   <motion.div
     layoutId="activeNavItem"
-    className="absolute inset-0 border border-dashed"
+    className="absolute inset-0 border border-dashed border-[#66D1FF]"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
