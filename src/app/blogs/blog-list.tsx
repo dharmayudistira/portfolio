@@ -1,11 +1,51 @@
-import { Button } from "@/components/ui";
+"use client";
+
+import { Button, Gap } from "@/components/ui";
 import { BLOGS } from "@/lib/blogs";
 import Link from "next/link";
+import { useState } from "react";
+import { IoIosSearch } from "react-icons/io";
 
 const BlogList = () => {
+  const [blogs, setBlogs] = useState(BLOGS);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (searchTerm: string) => {
+    const filteredBlogs = BLOGS.filter((blog) =>
+      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setBlogs(filteredBlogs);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch(searchTerm);
+    }
+  };
+
   return (
-    <div>
-      {BLOGS.map((blog) => (
+    <div className="flex flex-col">
+      <div className="flex gap-2 border-b-across px-2">
+        <div className="flex w-[350px] bg-secondary rounded-full border-x px-3 items-center gap-4">
+          <IoIosSearch className="w-6 h-6 text-[var(--color-secondary)]" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="text-white w-full outline-none caret-[#66D1FF] bg-transparent"
+            onKeyDown={handleKeyPress}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <Button variant="secondary" onClick={() => handleSearch(searchTerm)}>
+          Search
+        </Button>
+      </div>
+
+      <Gap size="sm" />
+
+      {blogs.map((blog) => (
         <div key={blog.id} className="grid w-full">
           <div className="grid grid-cols-12 border-b-across">
             <div className="col-span-3 border-r flex flex-col justify-start items-start px-2">

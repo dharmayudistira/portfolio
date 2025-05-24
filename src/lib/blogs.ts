@@ -5,7 +5,6 @@ type Blog = {
   description: string;
   date: string;
   link: string;
-  imageUrl: string;
 };
 
 export const BLOGS: Blog[] = [
@@ -16,7 +15,6 @@ export const BLOGS: Blog[] = [
       "Learn how to leverage Next.js features to build performant and maintainable React applications. Covering SSR, ISR, and best practices.",
     date: "2024-03-15",
     link: "https://www.google.com",
-    imageUrl: "",
   },
   {
     id: "2",
@@ -25,7 +23,6 @@ export const BLOGS: Blog[] = [
       "Discover how TypeScript improves developer experience and helps catch errors early. A practical guide to TypeScript's most useful features.",
     date: "2024-02-28",
     link: "https://www.google.com",
-    imageUrl: "",
   },
   {
     id: "3",
@@ -34,6 +31,5 @@ export const BLOGS: Blog[] = [
       "Deep dive into modern CSS layout techniques. Learn how to create responsive and complex layouts using CSS Grid and Flexbox.",
     date: "2024-02-10",
     link: "https://www.google.com",
-    imageUrl: "",
   },
 ];
