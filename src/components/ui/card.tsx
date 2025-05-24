@@ -36,7 +36,6 @@ interface BlogCardProps extends BaseCardProps {
   description: string;
   date: string;
   link: string;
-  imageUrl?: string;
 }
 
 interface DefaultCardProps extends BaseCardProps {
@@ -203,7 +202,6 @@ const Blog = ({
   description,
   date,
   link,
-  imageUrl,
   className,
 }: BlogCardProps) => {
   return (
@@ -223,19 +221,7 @@ const Blog = ({
         </Link>
       </div>
 
-      <div className="col-span-3">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={title}
-            width={1000}
-            height={1000}
-            className="w-full h-full object-cover rounded-lg"
-          />
-        ) : (
-          <div className="w-full h-full dots-pattern rounded-lg" />
-        )}
-      </div>
+      <div className="col-span-3 dots-pattern rounded-lg" />
     </div>
   );
 };

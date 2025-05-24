@@ -44,7 +44,6 @@ const BlogCard = memo(
       description={blog.description}
       date={blog.date}
       link={blog.link}
-      imageUrl={blog.imageUrl}
     />
   )
 );
