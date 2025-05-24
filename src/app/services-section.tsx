@@ -10,21 +10,21 @@ const SERVICES = [
     title: "Website & Desktop",
     tech: "ReactJS | NextJS | Tauri | PWA",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "I build fast, scalable, and modern websites and desktop apps — from sleek landing pages to robust internal platforms. Always optimized for performance and usability.",
   },
   {
     id: "01",
     title: "No-code Development",
     tech: "Webflow | Framer",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "Need to launch fast? I use no-code tools to build clean, responsive sites — perfect for startups, portfolios, and MVPs — without sacrificing quality.",
   },
   {
     id: "02",
     title: "Mobile",
     tech: "Flutter | Android",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+      "Cross-platform apps built with performance and polish. From Android-native to Flutter-based solutions, I deliver reliable mobile experiences that scale.",
   },
 ] as const;
 

@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from ".";
-import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 interface BaseCardProps {
   className?: string;
@@ -27,7 +26,9 @@ interface ProjectCardProps extends BaseCardProps {
   showcaseAssetUrl?: string;
   title: string;
   stacks: string[];
-  link?: string;
+  linkWeb?: string;
+  linkPlayStore?: string;
+  linkAppStore?: string;
 }
 
 interface BlogCardProps extends BaseCardProps {
@@ -105,7 +106,9 @@ Testimony.displayName = "Card.Testimony";
 const Project = ({
   title,
   stacks,
-  link,
+  linkWeb,
+  linkPlayStore,
+  linkAppStore,
   projectImageUrl,
   showcaseAssetUrl,
   className,
@@ -120,24 +123,42 @@ const Project = ({
             <Image
               src={projectImageUrl}
               alt={title}
-              width={64}
-              height={64}
-              className="rounded-full border"
+              width={500}
+              height={500}
+              className="rounded-full object-cover w-[64px] h-[64px] border"
             />
           ) : (
             <div className="w-16 h-16 rounded-full border dots-pattern" />
           )}
         </div>
 
-        <div className="col-span-5 p-4 flex items-center">
-          <Link
-            href={link ?? ""}
-            target="_blank"
-            className="inline-flex gap-2"
-          >
-            <p className="text-primary font-bold text-2xl hover:underline">{title}</p>
-            <ExternalLinkIcon className="w-3 h-3 text-primary" />
-          </Link>
+        <div className="col-span-5 p-4 flex flex-col justify-center">
+          <p className="text-white font-bold text-2xl">{title}</p>
+          <div className="flex gap-4 items-center">
+            {linkWeb && (
+              <Link href={linkWeb} target="_blank">
+                <p className="text-primary font-bold text-sm hover:underline">
+                  Website
+                </p>
+              </Link>
+            )}
+
+            {linkPlayStore && (
+              <Link href={linkPlayStore} target="_blank">
+                <p className="text-primary font-bold text-sm hover:underline">
+                  Play Store
+                </p>
+              </Link>
+            )}
+
+            {linkAppStore && (
+              <Link href={linkAppStore} target="_blank">
+                <p className="text-primary font-bold text-sm hover:underline">
+                  App Store
+                </p>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 

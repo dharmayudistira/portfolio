@@ -40,7 +40,9 @@ const ProjectCard = memo(
       key={project.key}
       title={project.title}
       stacks={project.stacks}
-      link={project.link}
+      linkWeb={project.linkWeb}
+      linkPlayStore={project.linkPlayStore}
+      linkAppStore={project.linkAppStore}
       projectImageUrl={project.projectImageUrl}
       showcaseAssetUrl={project.showcaseAssetUrl}
     />

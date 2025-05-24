@@ -43,7 +43,7 @@ const EXPERIENCE_ITEMS: ExperienceItem[] = [
   },
   {
     companyLogo: "/images/bangkit.jpeg",
-    companyName: "Bangkit Academy 2021",
+    companyName: "Bangkit Academy",
     role: "Mobile Development Graduate",
     startDate: "Februari 2021",
     endDate: "July 2021",

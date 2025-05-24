@@ -3,19 +3,56 @@ type Project = {
   title: string;
   description: string;
   stacks: string[];
-  link: string;
+  linkWeb?: string;
+  linkPlayStore?: string;
+  linkAppStore?: string;
   projectImageUrl: string;
   showcaseAssetUrl: string;
 };
 
 export const PROJECTS: Project[] = [
   {
+    key: "simpan",
+    title: "Simpan - Reksa Dana Transparan",
+    description: "Mutual fund investment platform",
+    stacks: ["Flutter", "Dart", "Riverpod"],
+    linkWeb: "https://www.simpaninvest.com/",
+    linkPlayStore:
+      "https://play.google.com/store/apps/details?id=com.simpan.mobile.stg",
+    linkAppStore:
+      "https://apps.apple.com/id/app/simpan-reksa-dana-transparan/id6444825882",
+    projectImageUrl: "/images/simpan.webp",
+    showcaseAssetUrl: "/images/simpan-showcase.png",
+  },
+  {
     key: "kickavenue",
     title: "KickAvenue",
     description: "Largest authentic marketplace",
     stacks: ["Flutter", "Dart", "Riverpod"],
-    link: "https://play.google.com/store/apps/details?id=com.kickavenue.androidshop&pcampaignid=web_share",
+    linkWeb: "https://www.kickavenue.com/",
+    linkPlayStore:
+      "https://play.google.com/store/apps/details?id=com.kickavenue.androidshop",
+    linkAppStore:
+      "https://apps.apple.com/id/app/kick-avenue-shop-hype-here/id1478394222",
     projectImageUrl: "/images/kick-avenue.webp",
     showcaseAssetUrl: "/images/kick-avenue-showcase.png",
+  },
+  {
+    key: "gcbc",
+    title: "Global Capacity Building Coalition",
+    description: "Resource and knowledge sharing platform",
+    stacks: ["NextJS", "ReactQuery"],
+    linkWeb: "https://capacity-building.org/",
+    projectImageUrl: "/images/gcbc.png",
+    showcaseAssetUrl: "/images/gcbc-showcase.png",
+  },
+  {
+    key: "sukanda",
+    title: "Sukanda Onelink",
+    description: "National scale B2B online platform",
+    stacks: ["NextJS", "ReactQuery"],
+    linkWeb: "https://buyer.sukandaonelink.com",
+    projectImageUrl: "/images/sukanda.png",
+    showcaseAssetUrl: "/images/sukanda-showcase.jpeg",
   },
 ];

@@ -36,9 +36,9 @@ export default function Page() {
       <Gap size="lg" />
       <ServicesSection />
       <Gap size="lg" />
-      <TestimoniesSection />
-      <Gap size="lg" />
       <ProjectsSection />
+      <Gap size="lg" />
+      <TestimoniesSection />
       <Gap size="lg" />
       <BlogsSection />
       <Gap size="lg" pattern="diagonal" />
