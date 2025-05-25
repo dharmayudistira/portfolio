@@ -13,16 +13,16 @@ const LiveClock = ({ className }: { className?: string }) => {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
-        hour12: true, // Enable 12-hour format with AM/PM
+        hour12: false,
       });
       const now = new Date();
       setTime(formatter.format(now));
     };
 
-    updateTime(); // Set initial time
+    updateTime();
     const interval = setInterval(updateTime, 1000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return <span className={cn("font-mono", className)}>{time}</span>;

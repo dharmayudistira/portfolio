@@ -1,22 +1,20 @@
 import { useState, useEffect, useCallback } from "react";
 
 const BREAKPOINTS = {
-  xs: 640,
-  sm: 768,
-  md: 1024,
-  lg: 1280,
-  xl: 1536,
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
 } as const;
 
 type ScreenSize = keyof typeof BREAKPOINTS | "2xl" | "";
 
 const getScreenSize = (width: number): ScreenSize => {
-  if (width < BREAKPOINTS.xs) return "xs";
-  if (width < BREAKPOINTS.sm) return "sm";
-  if (width < BREAKPOINTS.md) return "md";
-  if (width < BREAKPOINTS.lg) return "lg";
-  if (width < BREAKPOINTS.xl) return "xl";
-  return "2xl";
+  if (width >= BREAKPOINTS.xl) return "2xl";
+  if (width >= BREAKPOINTS.lg) return "xl";
+  if (width >= BREAKPOINTS.md) return "lg";
+  if (width >= BREAKPOINTS.sm) return "md";
+  return "sm";
 };
 
 export const useScreenSize = () => {

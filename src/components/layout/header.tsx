@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconPlus } from "../ui";
 import { motion } from "framer-motion";
-import { memo } from "react";
+import { memo, useState } from "react";
 import Image from "next/image";
+import { IoMenuSharp, IoCloseSharp } from "react-icons/io5";
+import { cn } from "@/lib/utils";
 
 interface NavigationItemProps {
   href: string;
@@ -49,7 +53,10 @@ const NavigationItem = memo(({ href, label }: NavigationItemProps) => {
       <div className="relative">
         {isActive && <ActiveStateOverlay />}
         <motion.p
-          className={`px-1 ${isActive ? "text-primary" : "text-white"}`}
+          className={cn("px-1 text-sm xl:text-base", {
+            "text-primary": isActive,
+            "text-white": !isActive,
+          })}
           variants={navItemVariants}
           whileHover="hover"
           whileTap="tap"
@@ -65,9 +72,11 @@ const NavigationItem = memo(({ href, label }: NavigationItemProps) => {
 NavigationItem.displayName = "NavigationItem";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 w-full flex justify-center items-center border-b">
-      <div className="w-full py-2 container flex justify-between items-center">
+    <header className="sticky top-0 z-50 w-full flex flex-col">
+      <div className="w-full py-2 container flex justify-between items-center border-b-across">
         <div className="flex gap-4 items-center">
           <Image
             src="/images/logo.png"
@@ -76,12 +85,12 @@ const Header = () => {
             height={128}
             className="w-10 h-10 rounded-lg"
           />
-          <p className="text-2xl text-white font-bold">
+          <p className="text-lg xl:text-2xl text-white font-bold">
             Dharma&apos;s Portfolio
           </p>
         </div>
 
-        <nav className="flex gap-4 text-white">
+        <nav className="hidden gap-4 text-white xl:flex">
           {navigationItems.map((item) => (
             <NavigationItem
               key={item.href}
@@ -90,7 +99,55 @@ const Header = () => {
             />
           ))}
         </nav>
+
+        {isMenuOpen ? (
+          <motion.div
+            className="xl:hidden"
+            key="close"
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.2, type: "spring", stiffness: 200 }}
+          >
+            <IoCloseSharp
+              className="text-primary  w-6 h-6"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+          className="xl:hidden"
+            key="menu"
+            initial={{ rotate: 90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: -90, opacity: 0 }}
+            transition={{ duration: 0.2, type: "spring", stiffness: 200 }}
+          >
+            <IoMenuSharp
+              className="text-primary w-6 h-6"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            />
+          </motion.div>
+        )}
       </div>
+
+      {isMenuOpen && (
+        <div
+          className={cn(
+            "w-full transition-all duration-300 px-4 py-4 border-b-across"
+          )}
+        >
+          <nav className="flex gap-4 text-white">
+            {navigationItems.map((item) => (
+              <NavigationItem
+                key={item.href}
+                href={item.href}
+                label={item.label}
+              />
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
