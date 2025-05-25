@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { IconPlus } from "../ui";
 import { motion } from "framer-motion";
 import { memo } from "react";
+import Image from "next/image";
 
 interface NavigationItemProps {
   href: string;
@@ -67,7 +68,18 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full flex justify-center items-center border-b">
       <div className="w-full py-2 container flex justify-between items-center">
-        <p className="text-2xl text-white font-bold">Dharma&apos;s Portfolio</p>
+        <div className="flex gap-4 items-center">
+          <Image
+            src="/images/logo.png"
+            alt="Dharma's Portfolio"
+            width={128}
+            height={128}
+            className="w-10 h-10 rounded-lg"
+          />
+          <p className="text-2xl text-white font-bold">
+            Dharma&apos;s Portfolio
+          </p>
+        </div>
 
         <nav className="flex gap-4 text-white">
           {navigationItems.map((item) => (
