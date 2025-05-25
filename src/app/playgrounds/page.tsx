@@ -10,7 +10,7 @@ export default function Page() {
       <HeroSection
         title="My Work, My Craft."
         description={
-          <p className="text-secondary-light text-xl">
+          <p className="text-secondary-light text-sm xl:text-xl">
             These projects reflect my growth, creativity, and commitment to
             building things that matter.
           </p>

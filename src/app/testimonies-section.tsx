@@ -64,8 +64,7 @@ const QuoteImage = memo(() => (
     height={100}
     priority
     quality={90}
-    className="object-contain"
-    sizes="(max-width: 768px) 50px, 100px"
+    className="object-contain w-12 h-12 xl:w-24 xl:h-24"
   />
 ));
 
@@ -75,10 +74,11 @@ const TestimonialCard = memo(
   ({ testimonial, index }: { testimonial: Testimonial; index: number }) => (
     <Card.Testimony
       key={`${testimonial.name}-${index}`}
-      className={cn(
-        `${index === 2 || index === 5 ? "border-b-across border-r" : ""}`,
-        `${index === 0 || index === 3 || index === 6 ? "border-r" : ""}`
-      )}
+      className={cn("border-b-across", {
+        "xl:border-r": index === 0 || index === 2 || index == 6,
+        "border-r xl:border-r-0": index === 1,
+        "border-r": index === 3 || index === 5,
+      })}
       name={testimonial.name}
       company={testimonial.company}
       review={testimonial.review}
@@ -89,25 +89,32 @@ const TestimonialCard = memo(
 TestimonialCard.displayName = "TestimonialCard";
 
 const SectionHeader = memo(() => (
-  <div className="w-full grid grid-cols-12">
-    <div className="col-span-1 md:col-span-4">
+  <div className="w-full grid grid-cols-6 xl:grid-cols-12">
+    <div className="col-span-2 xl:col-span-4">
       <div className="h-full w-full content-end border-r">
-        <p className="text-secondary px-2 font-code tracking-wide text-sm">
-          [ testimonies section ]
+        <p className="text-secondary px-2 font-code tracking-wide text-xs xl:text-sm ">
+          <span className="hidden xl:block">
+            [ testimonies <span className="hidden xl:inline">section</span> ]
+          </span>
+
+          <span className="block xl:hidden">[testimony]</span>
         </p>
       </div>
     </div>
 
-    <div className="col-span-8">
+    <div className="col-span-4 xl:col-span-8">
       <div className="w-full h-full flex flex-col justify-end">
         <div className="h-12 w-full content-end border-b-across">
-          <p className="text-secondary px-2 font-code tracking-wide text-sm">
+          <p className="text-secondary px-2 font-code tracking-wide text-xs xl:hidden">
+            text-xl font-bold
+          </p>
+          <p className="text-secondary px-2 font-code tracking-wide hidden xl:block text-sm">
             text-3xl font-bold
           </p>
         </div>
 
         <div className="w-full border-b-across">
-          <p className="h-36 content-end text-white text-3xl font-bold px-2">
+          <p className="h-18 xl:h-36 content-end text-white text-xl xl:text-3xl font-bold px-2">
             Words from Those I&apos;ve Worked With.
           </p>
         </div>
@@ -125,7 +132,7 @@ const TestimoniesSection = memo(() => {
       <Gap size="sm" pattern="diagonal" />
 
       <div className="grid grid-cols-12">
-        <div className="col-span-4 p-4 border-r border-b-across flex justify-center items-center">
+        <div className="col-span-6 xl:col-span-4 p-4 border-r border-b-across flex justify-center items-center">
           <QuoteImage />
         </div>
 
@@ -137,7 +144,7 @@ const TestimoniesSection = memo(() => {
           />
         ))}
 
-        <div className="col-span-4 p-4 border-b-across flex justify-center items-center">
+        <div className="col-span-12 xl:col-span-4 p-4 border-b-across flex justify-center items-center">
           <QuoteImage />
         </div>
       </div>

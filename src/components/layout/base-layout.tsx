@@ -38,7 +38,7 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
 
       {/* Screen Size */}
-      <div className="absolute bottom-0 right-0">
+      <div className="hidden xl:block absolute bottom-0 right-0">
         <p className="border-t border-l rounded-tl-md p-1 text-xs text-secondary">
           {screenSize}
         </p>

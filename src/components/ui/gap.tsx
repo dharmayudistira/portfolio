@@ -10,9 +10,9 @@ interface GapProps {
 
 const Gap = ({ size = "md", pattern = "none" }: GapProps) => {
   const sizeMap: Record<GapSize, string> = {
-    sm: "h-8",
-    md: "h-16",
-    lg: "h-24",
+    sm: "h-4 xl:h-8",
+    md: "h-8 xl:h-16",
+    lg: "h-12 xl:h-24",
   };
 
   const patternMap: Record<GapPattern, string> = {

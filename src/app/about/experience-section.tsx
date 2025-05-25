@@ -77,7 +77,7 @@ const ExperienceItem = ({
 
   return (
     <div className={cn("grid grid-cols-12", !isLast && "border-b")}>
-      <div className="col-span-2 flex items-center justify-center p-3 border-r">
+      <div className="col-span-3 xl:col-span-2 flex items-center justify-center p-3 border-r">
         <div className="p-1 border border-dashed rounded-xl">
           <Image
             src={companyLogo}
@@ -90,13 +90,13 @@ const ExperienceItem = ({
           />
         </div>
       </div>
-      <div className="col-span-10 flex justify-between px-2">
+      <div className="col-span-9 xl:col-span-10 xl:flex-row flex-col justify-between px-2">
         <div className="flex flex-col justify-center gap-1">
-          <p className="text-white text-lg font-bold">{companyName}</p>
-          <p className="text-secondary-light text-sm">{role}</p>
+          <p className="text-white text-base xl:text-lg font-bold">{companyName}</p>
+          <p className="text-secondary-light text-xs xl:text-sm">{role}</p>
         </div>
 
-        <p className="text-secondary-light text-sm pt-2">{dateRange}</p>
+        <p className="xl:mt-0 mt-2 text-secondary-light text-xs xl:text-sm pt-2">{dateRange}</p>
       </div>
     </div>
   );
@@ -105,11 +105,11 @@ const ExperienceItem = ({
 const ExperienceSection = () => {
   return (
     <div className="grid grid-cols-12 border-b-across">
-      <div className="col-span-5 border-r px-2 flex flex-col gap-4 pt-4">
-        <p className="text-3xl font-bold text-white">
+      <div className="col-span-12 xl:col-span-5 xl:border-r px-2 flex flex-col gap-4 pt-4">
+        <p className="text-xl xl:text-3xl font-bold text-white">
           Experience with a variety of Projects and industries.
         </p>
-        <p className="text-secondary-light">
+        <p className="text-secondary-light text-sm xl:text-base">
           Hands-on experience across mobile, web, and desktop — solving
           problems, building products, and learning along the way.
         </p>
@@ -125,9 +125,9 @@ const ExperienceSection = () => {
         </Button>
       </div>
 
-      <div className="col-span-7 pt-4 flex flex-col">
-        <div className="h-12 content-end border-b">
-          <p className="text-secondary px-2 font-code tracking-wide text-sm">
+      <div className="col-span-12 xl:col-span-7 pt-4 flex flex-col">
+        <div className="h-12 content-end border-b border-t xl:border-t-0">
+          <p className="text-secondary px-2 font-code tracking-wide text-xs xl:text-sm">
             [ experiences ]
           </p>
         </div>

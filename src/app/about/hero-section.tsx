@@ -1,4 +1,4 @@
-import { Gap, LiveClock } from "@/components/ui";
+import { LiveClock } from "@/components/ui";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -53,15 +53,15 @@ const SocialLinks = () => (
 const HeroSection = () => {
   return (
     <>
-      <Gap size="lg" />
+      <div className="w-full h-12 xl:h-24"/>
 
-      <div className="grid grid-cols-12 border-b-across">
-        <div className="col-span-9 border-r">
-          <h1 className="mt-4 text-white text-6xl tracking-tighter px-2 font-bold border-b">
+      <div className="grid grid-cols-12 border-b-across border-t-across">
+        <div className="col-span-12 xl:col-span-9 xl:border-r">
+          <h1 className="mt-4 text-white text-4xl xl:text-6xl tracking-tighter px-2 font-bold border-b">
             Dharma Yudistira Eka Putra
           </h1>
 
-          <p className="mt-4 border-b text-secondary px-2 font-code tracking-wide text-sm">
+          <p className="mt-4 border-b text-secondary px-2 font-code tracking-wide text-xs xl:text-sm">
             Greetings from{" "}
             <span className="text-secondary-light font-bold">
               Sidoarjo, Indonesia!
@@ -71,7 +71,7 @@ const HeroSection = () => {
             here right now.
           </p>
 
-          <p className="mt-10 text-secondary-light px-2.5 font-code tracking-wide text-sm w-3/4">
+          <p className="mt-10 border-b xl:border-b-0 text-secondary-light px-2.5 font-code tracking-wide text-xs xl:text-sm w-full xl:w-3/4">
             — a <span className="text-primary">Product Engineer</span> who loves
             turning ideas into clean, useful, and reliable digital products.
             <br />
@@ -109,7 +109,7 @@ const HeroSection = () => {
           </p>
         </div>
 
-        <div className="col-span-3 p-6 flex justify-center items-center dots-pattern">
+        <div className="col-span-12 xl:col-span-3 p-6 flex justify-center items-center dots-pattern">
           <div className="w-full p-2 h-full bg-color border rounded-xl border-dashed border-[#66D1FF] relative">
             <Image
               src="/images/profile-picture.jpg"

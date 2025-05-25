@@ -16,8 +16,8 @@ const Button = ({
   const baseStyles = "rounded-full px-4 py-2 cursor-pointer w-fit";
 
   const variantStyles = {
-    primary: "bg-color text-white outline text-sm hover:opacity-80",
-    secondary: "bg-secondary text-white text-sm hover:opacity-80",
+    primary: "bg-color text-white outline text-xs xl:text-sm hover:opacity-80",
+    secondary: "bg-secondary text-white text-xs xl:text-sm hover:opacity-80",
   };
 
   return (

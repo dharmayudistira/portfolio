@@ -6,25 +6,28 @@ import { BLOGS } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
 
 const SectionHeader = memo(() => (
-  <div className="w-full grid grid-cols-12">
-    <div className="col-span-4">
+  <div className="w-full grid grid-cols-6 xl:grid-cols-12">
+    <div className="col-span-2 xl:col-span-4">
       <div className="h-full w-full content-end border-r">
-        <p className="text-secondary px-2 font-code tracking-wide text-sm">
-          [ blogs section ]
+        <p className="text-secondary px-2 font-code tracking-wide text-xs xl:text-sm">
+          [ blogs <span className="hidden xl:inline">section</span> ]
         </p>
       </div>
     </div>
 
-    <div className="col-span-8">
+    <div className="col-span-4 xl:col-span-8">
       <div className="w-full h-full flex flex-col justify-end">
         <div className="h-12 w-full content-end border-b-across">
-          <p className="text-secondary px-2 font-code tracking-wide text-sm">
+          <p className="text-secondary px-2 font-code tracking-wide text-xs xl:hidden">
+            text-xl font-bold
+          </p>
+          <p className="text-secondary px-2 font-code tracking-wide hidden xl:block text-sm">
             text-3xl font-bold
           </p>
         </div>
 
         <div className="w-full border-b-across">
-          <p className="h-36 content-end text-white text-3xl font-bold px-2">
+          <p className="h-18 xl:h-36 content-end text-white text-xl xl:text-3xl font-bold px-2">
             Things Worth Sharing.
           </p>
         </div>

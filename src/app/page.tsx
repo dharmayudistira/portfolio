@@ -15,19 +15,19 @@ export default function Page() {
       <HeroSection
         title="Building Scalable Apps for Web, Mobile & Desktop."
         description={
-          <p className="text-secondary-light text-xl">
+          <p className="text-secondary-light text-sm xl:text-xl">
             Hi, I&apos;m{" "}
             <span className="text-primary font-bold">Dharma Yudistira</span>—a
             product engineer focused on seamless digital experiences across web
-            and mobile. <br /> I currently work at{" "}
+            and mobile. <br className="hidden xl:block" /> I currently work at{" "}
             <span className="text-primary font-bold">
               <Link
                 href="https://zero-one-group.com"
                 target="_blank"
-                className="inline-flex items-center gap-2 hover:underline"
+                className="inline-flex items-center xl:gap-2 hover:underline"
               >
-                Zero One Group
-                <ExternalLinkIcon className="w-4 h-4" />
+                Zero One Group <span className="block xl:hidden">.</span>
+                <ExternalLinkIcon className="hidden xl:block w-4 h-4" />
               </Link>
             </span>
           </p>

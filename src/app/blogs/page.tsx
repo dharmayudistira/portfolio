@@ -10,7 +10,7 @@ export default function Page() {
       <HeroSection
         title={"Engineering in Words"}
         description={
-          <p className="text-secondary-light text-xl">
+          <p className="text-secondary-light text-sm xl:text-xl">
             Things I&apos;ve written to document, explain, and sometimes just
             share what&apos;s on my mind.
           </p>

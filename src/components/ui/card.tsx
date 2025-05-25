@@ -63,15 +63,15 @@ const Service = ({
   const baseStyles = "p-4 bg-color rounded-lg border";
 
   return (
-    <div className={cn(baseStyles, "grid grid-cols-12", className)}>
-      <div className="col-span-4">{leading}</div>
-      <div className="col-span-8 grid grid-cols-8">
-        <div className="col-span-4 flex flex-col gap-4">
-          <p className="text-white font-bold text-2xl">{title}</p>
-          <p className="text-secondary-light">{description}</p>
+    <div className={cn(baseStyles, "flex flex-col xl:grid xl:grid-cols-12", className)}>
+      <div className="w-full xl:col-span-4">{leading}</div>
+      <div className="w-full xl:col-span-8 flex flex-col xl:grid xl:grid-cols-8">
+        <div className="w-full xl:col-span-4 flex flex-col gap-4">
+          <p className="text-white font-bold text-xl xl:text-2xl">{title}</p>
+          <p className="text-secondary-light text-sm xl:text-base">{description}</p>
         </div>
 
-        <div className="col-span-4 dots-pattern w-full h-full border rounded-sm" />
+        <div className="col-span-4 dots-pattern w-full h-full border rounded-sm hidden xl:block" />
       </div>
     </div>
   );
@@ -87,15 +87,15 @@ const Testimony = ({
   return (
     <div
       className={cn(
-        "col-span-4 p-4 flex flex-col gap-8 justify-between",
+        "col-span-6 xl:col-span-4 p-4 flex flex-col gap-4 xl:gap-8 justify-between",
         className
       )}
     >
-      <p className="text-secondary-light">{`"${review}"`}</p>
+      <p className="text-secondary-light text-sm xl:text-base">{`"${review}"`}</p>
 
       <div className="flex flex-col">
-        <p className="text-primary font-bold text-xl">{name}</p>
-        <p className="text-secondary-light font-code text-sm">{company}</p>
+        <p className="text-primary font-bold text-base xl:text-xl">{name}</p>
+        <p className="text-secondary-light font-code text-xs xl:text-sm">{company}</p>
       </div>
     </div>
   );
@@ -115,28 +115,28 @@ const Project = ({
   const baseStyles = "bg-color rounded-lg border";
 
   return (
-    <div className={cn(baseStyles, "col-span-6 flex flex-col", className)}>
+    <div className={cn(baseStyles, "col-span-12 xl:col-span-6 flex flex-col", className)}>
       <div className="grid grid-cols-6 border-b">
-        <div className="col-span-1 p-4 flex justify-center items-center border-r">
+        <div className="col-span-2 xl:col-span-1 p-2 xl:p-4 flex justify-center items-center border-r">
           {projectImageUrl ? (
             <Image
               src={projectImageUrl}
               alt={title}
               width={500}
               height={500}
-              className="rounded-full object-cover w-[64px] h-[64px] border"
+              className="rounded-full object-cover w-[48px] h-[48px] xl:w-[64px] xl:h-[64px] border"
             />
           ) : (
-            <div className="w-16 h-16 rounded-full border dots-pattern" />
+            <div className="w-12 h-12 xl:w-16 xl:h-16 rounded-full border dots-pattern" />
           )}
         </div>
 
-        <div className="col-span-5 p-4 flex flex-col justify-center">
-          <p className="text-white font-bold text-2xl">{title}</p>
-          <div className="flex gap-4 items-center">
+        <div className="col-span-4 xl:col-span-5 p-4 flex flex-col justify-center">
+          <p className="text-white font-bold text-lg xl:text-2xl">{title}</p>
+          <div className="flex flex-wrap gap-2 xl:gap-4 items-center">
             {linkWeb && (
               <Link href={linkWeb} target="_blank">
-                <p className="text-primary font-bold text-sm hover:underline">
+                <p className="text-primary font-bold text-xs xl:text-sm hover:underline">
                   Website
                 </p>
               </Link>
@@ -144,7 +144,7 @@ const Project = ({
 
             {linkPlayStore && (
               <Link href={linkPlayStore} target="_blank">
-                <p className="text-primary font-bold text-sm hover:underline">
+                <p className="text-primary font-bold text-xs xl:text-sm hover:underline">
                   Play Store
                 </p>
               </Link>
@@ -165,7 +165,7 @@ const Project = ({
         {stacks.map((stack) => (
           <p
             key={stack}
-            className="text-secondary-light font-code text-sm px-4 py-2"
+            className="text-secondary-light font-code text-xs xl:text-sm px-2 xl:px-4 py-2"
           >
             {stack}
           </p>
@@ -206,14 +206,14 @@ const Blog = ({
 }: BlogCardProps) => {
   return (
     <div className={cn("grid grid-cols-12 p-4", className)}>
-      <div className="col-span-4">
-        <p className="text-primary font-bold text-2xl">{title}</p>
+      <div className="col-span-12 xl:col-span-4">
+        <p className="text-primary font-bold text-lg xl:text-2xl">{title}</p>
       </div>
 
-      <div className="col-span-5 flex flex-col gap-16 justify-between">
-        <div className="flex flex-col gap-4">
-          <p className="text-secondary-light font-code text-sm">{`[ ${date} ]`}</p>
-          <p className="text-white">{description}</p>
+      <div className="col-span-12 xl:col-span-5 flex flex-col gap-8 xl:gap-16 justify-between">
+        <div className="flex flex-col gap-4 mt-2 xl:mt-0">
+          <p className="text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
+          <p className="text-white text-sm xl:text-base">{description}</p>
         </div>
 
         <Link href={link} target="_blank">
