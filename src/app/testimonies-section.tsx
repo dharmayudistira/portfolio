@@ -13,8 +13,8 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sarah Chen",
-    company: "Microsoft",
+    name: "Aris Ripandi",
+    company: "Senior Product Engineer at Zero One Group",
     review:
       "Working with Dharma was a fantastic experience. His attention to detail and ability to deliver clean, efficient code made our project a success. His expertise in React and TypeScript really showed in the final product.",
   },
@@ -49,10 +49,10 @@ const testimonials: Testimonial[] = [
       "Working with Dharma was a pleasure. His deep understanding of modern web technologies and best practices helped us create a robust and scalable application.",
   },
   {
-    name: "Lisa Anderson",
-    company: "Spotify",
+    name: "Doni Rubiagatra",
+    company: "VP of Engineering at Zero One Group",
     review:
-      "Dharma brought invaluable insights to our project. His expertise in frontend architecture and commitment to code quality resulted in a product that exceeded our expectations.",
+      "Dharma brought invaluable insights to our project. His proactive attitude, expertise in frontend architecture, and commitment to code quality resulted in a product that exceeded our expectations.",
   },
 ];
 
