@@ -19,6 +19,18 @@ const testimonials: Testimonial[] = [
       "Working with Dharma was a fantastic experience. His attention to detail and ability to deliver clean, efficient code made our project a success. His expertise in React and TypeScript really showed in the final product.",
   },
   {
+    name: "Doni Rubiagatra",
+    company: "Google Developer Expert (Cloud)",
+    review:
+      "Dharma brought invaluable insights to our project. His proactive attitude, expertise in frontend architecture, and commitment to code quality resulted in a product that exceeded our expectations.",
+  },
+  {
+    name: "Muhammad Ilham Adhim",
+    company: "Front-End Developer at Erajaya Swasembada",
+    review:
+      "A truly talented developer who combines technical skill with great project management. Dharma consistently delivered high-quality code and was always ready to tackle new challenges.",
+  },
+  {
     name: "Michael Rodriguez",
     company: "Tesla",
     review:
@@ -37,22 +49,10 @@ const testimonials: Testimonial[] = [
       "Dharma demonstrated outstanding expertise in frontend development. His work on our user interface significantly improved our application's user experience and performance metrics.",
   },
   {
-    name: "Sophia Patel",
-    company: "Netflix",
-    review:
-      "A truly talented developer who combines technical skill with great project management. Dharma consistently delivered high-quality code and was always ready to tackle new challenges.",
-  },
-  {
     name: "David Kim",
     company: "Adobe",
     review:
       "Working with Dharma was a pleasure. His deep understanding of modern web technologies and best practices helped us create a robust and scalable application.",
-  },
-  {
-    name: "Doni Rubiagatra",
-    company: "VP of Engineering at Zero One Group",
-    review:
-      "Dharma brought invaluable insights to our project. His proactive attitude, expertise in frontend architecture, and commitment to code quality resulted in a product that exceeded our expectations.",
   },
 ];
 

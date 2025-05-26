@@ -3,6 +3,7 @@
 import { memo } from "react";
 import Card from "@/components/ui/card";
 import { Gap } from "@/components/ui";
+import Spline from "@splinetool/react-spline";
 
 const SERVICES = [
   {
@@ -39,7 +40,9 @@ const ServiceCard = memo(
           <p className="text-secondary font-code tracking-wide text-xs xl:text-sm">
             [ {service.id} ]
           </p>
-          <p className="text-primary font-bold text-xl xl:text-2xl">{service.title}</p>
+          <p className="text-primary font-bold text-xl xl:text-2xl">
+            {service.title}
+          </p>
         </div>
       }
     />
@@ -86,10 +89,18 @@ const ServicesSection = memo(() => {
     <section className="w-full flex flex-col">
       <SectionHeader />
       <Gap size="sm" />
-      <div className="w-full bg-secondary p-2 space-y-2 border-b-across">
-        {SERVICES.map((service) => (
-          <ServiceCard key={service.id} service={service} />
-        ))}
+      <div className="w-full bg-secondary p-2 xl:space-x-2 flex flex-col gap-2 xl:gap-0 xl:grid xl:grid-cols-12 border-b-across">
+        <div className="col-span-4">
+          <div className="w-full h-64 xl:h-full bg-color rounded-lg border">
+            <Spline scene="https://prod.spline.design/yodehLur6Q7xkRYk/scene.splinecode" />
+          </div>
+        </div>
+
+        <div className="col-span-8 space-y-2">
+          {SERVICES.map((service) => (
+            <ServiceCard key={service.id} service={service} />
+          ))}
+        </div>
       </div>
     </section>
   );

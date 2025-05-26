@@ -4,6 +4,7 @@ import { memo } from "react";
 import { Card, Gap } from "@/components/ui";
 import { BLOGS } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
+import Spline from "@splinetool/react-spline";
 
 const SectionHeader = memo(() => (
   <div className="w-full grid grid-cols-6 xl:grid-cols-12">
@@ -59,14 +60,22 @@ const BlogsSection = memo(() => {
       <SectionHeader />
       <Gap size="sm" pattern="diagonal" />
 
-      <div className="w-full space-y-4 border-b-across">
-        {BLOGS.map((blog, index) => (
-          <BlogCard
-            key={blog.id}
-            blog={blog}
-            isLast={index === BLOGS.length - 1}
-          />
-        ))}
+      <div className="w-full flex flex-col xl:grid xl:grid-cols-12 border-b-across">
+        <div className="col-span-8 space-y-4">
+          {BLOGS.slice(0, 2).map((blog, index) => (
+            <BlogCard
+              key={blog.id}
+              blog={blog}
+              isLast={index === BLOGS.length - 1}
+            />
+          ))}
+        </div>
+
+        <div className="col-span-4 border-t xl:border-l dots-pattern p-3">
+          <div className="w-full h-full bg-color rounded-lg border">
+            <Spline className="rounded-lg" scene="https://prod.spline.design/XGPcvinn3ITtvj96/scene.splinecode" />
+          </div>
+        </div>
       </div>
     </section>
   );

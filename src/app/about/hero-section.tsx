@@ -29,6 +29,11 @@ const socialLinks: SocialLink[] = [
     icon: "/icons/linkedin.png",
     alt: "LinkedIn",
   },
+  {
+    href: "https://medium.com/@dharmayudistira2000",
+    icon: "/icons/medium.png",
+    alt: "Medium",
+  },
 ];
 
 const SocialLinks = () => (

@@ -63,15 +63,21 @@ const Service = ({
   const baseStyles = "p-4 bg-color rounded-lg border";
 
   return (
-    <div className={cn(baseStyles, "flex flex-col xl:grid xl:grid-cols-12", className)}>
+    <div
+      className={cn(
+        baseStyles,
+        "flex flex-col xl:grid xl:grid-cols-12",
+        className
+      )}
+    >
       <div className="w-full xl:col-span-4">{leading}</div>
-      <div className="w-full xl:col-span-8 flex flex-col xl:grid xl:grid-cols-8">
-        <div className="w-full xl:col-span-4 flex flex-col gap-4">
+      <div className="w-full xl:col-span-8 flex flex-col">
+        <div className="w-full flex flex-col gap-4">
           <p className="text-white font-bold text-xl xl:text-2xl">{title}</p>
-          <p className="text-secondary-light text-sm xl:text-base">{description}</p>
+          <p className="text-secondary-light text-sm xl:text-base">
+            {description}
+          </p>
         </div>
-
-        <div className="col-span-4 dots-pattern w-full h-full border rounded-sm hidden xl:block" />
       </div>
     </div>
   );
@@ -95,7 +101,9 @@ const Testimony = ({
 
       <div className="flex flex-col">
         <p className="text-primary font-bold text-base xl:text-xl">{name}</p>
-        <p className="text-secondary-light font-code text-xs xl:text-sm">{company}</p>
+        <p className="text-secondary-light font-code text-xs xl:text-sm">
+          {company}
+        </p>
       </div>
     </div>
   );
@@ -115,7 +123,13 @@ const Project = ({
   const baseStyles = "bg-color rounded-lg border";
 
   return (
-    <div className={cn(baseStyles, "col-span-12 xl:col-span-6 flex flex-col", className)}>
+    <div
+      className={cn(
+        baseStyles,
+        "col-span-12 xl:col-span-6 flex flex-col",
+        className
+      )}
+    >
       <div className="grid grid-cols-6 border-b">
         <div className="col-span-2 xl:col-span-1 p-2 xl:p-4 flex justify-center items-center border-r">
           {projectImageUrl ? (
@@ -197,31 +211,24 @@ const Project = ({
 };
 Project.displayName = "Card.Project";
 
-const Blog = ({
-  title,
-  description,
-  date,
-  link,
-  className,
-}: BlogCardProps) => {
+const Blog = ({ title, description, date, link, className }: BlogCardProps) => {
   return (
-    <div className={cn("grid grid-cols-12 p-4", className)}>
-      <div className="col-span-12 xl:col-span-4">
-        <p className="text-primary font-bold text-lg xl:text-2xl">{title}</p>
+    <div className={cn("flex flex-col gap-4 p-4", className)}>
+      <div className="w-full flex justify-between">
+        <p className="text-primary font-bold text-lg xl:text-2xl xl:w-3/4">
+          {title}
+        </p>
+        <p className="hidden xl:block text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
       </div>
 
-      <div className="col-span-12 xl:col-span-5 flex flex-col gap-8 xl:gap-16 justify-between">
-        <div className="flex flex-col gap-4 mt-2 xl:mt-0">
-          <p className="text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
-          <p className="text-white text-sm xl:text-base">{description}</p>
-        </div>
+      <div className="w-full flex flex-col gap-8 justify-between">
+        <p className="xl:hidden text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
+        <p className="text-white text-sm xl:text-base xl:w-3/4">{description}</p>
 
-        <Link href={link} target="_blank">
+        <Link className="w-fit" href={link} target="_blank">
           <Button variant="secondary">Read More</Button>
         </Link>
       </div>
-
-      <div className="col-span-3 dots-pattern rounded-lg" />
     </div>
   );
 };
