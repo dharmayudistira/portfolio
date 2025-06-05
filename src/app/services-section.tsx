@@ -1,4 +1,4 @@
-import { Gap, ServiceCard } from "@/components/ui";
+import { Gap, ImageComparison, ServiceCard } from "@/components/ui";
 
 const SERVICES = [
   {
@@ -81,7 +81,10 @@ const ServicesSection = () => {
       <div className="w-full bg-secondary p-2 xl:space-x-2 flex flex-col gap-2 xl:gap-0 xl:grid xl:grid-cols-12 border-b-across">
         <div className="col-span-4">
           <div className="w-full h-64 xl:h-full bg-color rounded-lg border">
-            {/*  */}
+            <ImageComparison
+              beforeAsset="/images/web-dev.png"
+              afterAsset="/images/mobile-dev.png"
+            />
           </div>
         </div>
 

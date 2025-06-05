@@ -117,7 +117,7 @@ const HeroSection = () => {
         <div className="col-span-12 xl:col-span-3 p-6 flex justify-center items-center dots-pattern">
           <div className="w-full p-2 h-full bg-color border rounded-xl border-dashed border-[#66D1FF] relative">
             <Image
-              src="/images/profile-picture.jpg"
+              src="/images/profile-picture.png"
               alt="Profile"
               width={500}
               height={500}

@@ -67,9 +67,15 @@ const BlogsSection = () => {
           ))}
         </div>
 
-        <div className="col-span-4 border-t xl:border-l dots-pattern p-3">
+        <div className="col-span-4 border-t xl:border-l bg-secondary p-3">
           <div className="w-full h-full bg-color rounded-lg border">
-            {/*  */}
+            <video
+              src="/video/heartbeat.mp4"
+              autoPlay
+              loop
+              muted
+              className="w-full h-full object-cover rounded-lg"
+            />
           </div>
         </div>
       </div>
