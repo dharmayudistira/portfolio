@@ -1,7 +1,4 @@
-"use client";
-
-import { memo } from "react";
-import { Card, Gap } from "@/components/ui";
+import { Gap, TestimonyCard } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -26,7 +23,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Muhammad Ilham Adhim",
-    company: "Front-End Developer at Erajaya Swasembada",
+    company: "Front-End Developer at Belli AI",
     review:
       "A truly talented developer who combines technical skill with great project management. Dharma consistently delivered high-quality code and was always ready to tackle new challenges.",
   },
@@ -56,7 +53,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const QuoteImage = memo(() => (
+const QuoteImage = () => (
   <Image
     src="/icons/quote.png"
     alt="Quotation Mark"
@@ -66,29 +63,29 @@ const QuoteImage = memo(() => (
     quality={90}
     className="object-contain w-12 h-12 xl:w-24 xl:h-24"
   />
-));
-
-QuoteImage.displayName = "QuoteImage";
-
-const TestimonialCard = memo(
-  ({ testimonial, index }: { testimonial: Testimonial; index: number }) => (
-    <Card.Testimony
-      key={`${testimonial.name}-${index}`}
-      className={cn("border-b-across", {
-        "xl:border-r": index === 0 || index === 2 || index == 6,
-        "border-r xl:border-r-0": index === 1,
-        "border-r": index === 3 || index === 5,
-      })}
-      name={testimonial.name}
-      company={testimonial.company}
-      review={testimonial.review}
-    />
-  )
 );
 
-TestimonialCard.displayName = "TestimonialCard";
+const TestimonialItem = ({
+  testimonial,
+  index,
+}: {
+  testimonial: Testimonial;
+  index: number;
+}) => (
+  <TestimonyCard
+    key={`${testimonial.name}-${index}`}
+    className={cn("border-b-across", {
+      "xl:border-r": index === 0 || index === 2 || index == 6,
+      "border-r xl:border-r-0": index === 1,
+      "border-r": index === 3 || index === 5,
+    })}
+    name={testimonial.name}
+    company={testimonial.company}
+    review={testimonial.review}
+  />
+);
 
-const SectionHeader = memo(() => (
+const SectionHeader = () => (
   <div className="w-full grid grid-cols-6 xl:grid-cols-12">
     <div className="col-span-2 xl:col-span-4">
       <div className="h-full w-full content-end border-r">
@@ -121,11 +118,9 @@ const SectionHeader = memo(() => (
       </div>
     </div>
   </div>
-));
+);
 
-SectionHeader.displayName = "SectionHeader";
-
-const TestimoniesSection = memo(() => {
+const TestimoniesSection = () => {
   return (
     <section className="w-full flex flex-col">
       <SectionHeader />
@@ -137,7 +132,7 @@ const TestimoniesSection = memo(() => {
         </div>
 
         {testimonials.map((testimonial, index) => (
-          <TestimonialCard
+          <TestimonialItem
             key={`${testimonial.name}-${index}`}
             testimonial={testimonial}
             index={index}
@@ -150,8 +145,6 @@ const TestimoniesSection = memo(() => {
       </div>
     </section>
   );
-});
-
-TestimoniesSection.displayName = "TestimoniesSection";
+};
 
 export default TestimoniesSection;

@@ -87,16 +87,21 @@ const ExperienceItem = ({
             className="rounded-lg"
             loading={index === 0 ? "eager" : "lazy"}
             priority={index === 0}
+            sizes="40px"
           />
         </div>
       </div>
-      <div className="col-span-9 xl:col-span-10 xl:flex-row flex-col justify-between px-2">
+      <div className="col-span-9 xl:col-span-10 flex xl:flex-row flex-col justify-between px-2">
         <div className="flex flex-col justify-center gap-1">
-          <p className="text-white text-base xl:text-lg font-bold">{companyName}</p>
+          <p className="text-white text-base xl:text-lg font-bold">
+            {companyName}
+          </p>
           <p className="text-secondary-light text-xs xl:text-sm">{role}</p>
         </div>
 
-        <p className="xl:mt-0 mt-2 text-secondary-light text-xs xl:text-sm pt-2">{dateRange}</p>
+        <p className="xl:mt-0 mt-2 text-secondary-light text-xs xl:text-sm pt-2">
+          {dateRange}
+        </p>
       </div>
     </div>
   );

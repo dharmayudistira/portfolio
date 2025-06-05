@@ -3,24 +3,33 @@
 import { Button, Gap } from "@/components/ui";
 import { BLOGS } from "@/lib/blogs";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState(BLOGS);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = (searchTerm: string) => {
+  // Debounced search function to avoid excessive filtering
+  const debouncedSearch = useCallback(() => {
     const filteredBlogs = BLOGS.filter((blog) =>
       blog.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
     setBlogs(filteredBlogs);
-  };
+  }, [searchTerm]);
+
+  // Apply debounce effect for search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      debouncedSearch();
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, debouncedSearch]);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleSearch(searchTerm);
+      debouncedSearch();
     }
   };
 
@@ -32,13 +41,13 @@ const BlogList = () => {
           <input
             type="text"
             placeholder="Search"
-            className="text-white w-full outline-none text-sm xl:text-base  caret-[#66D1FF] bg-transparent"
+            className="text-white w-full outline-none text-sm xl:text-base caret-[#66D1FF] bg-transparent"
             onKeyDown={handleKeyPress}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <Button variant="secondary" onClick={() => handleSearch(searchTerm)}>
+        <Button variant="secondary" onClick={debouncedSearch}>
           Search
         </Button>
       </div>
@@ -53,7 +62,9 @@ const BlogList = () => {
             </div>
 
             <div className="col-span-12 xl:col-span-9 flex flex-col gap-4 px-2">
-              <p className="text-primary font-bold text-base xl:text-xl">{blog.title}</p>
+              <p className="text-primary font-bold text-base xl:text-xl">
+                {blog.title}
+              </p>
               <p className="text-secondary-light text-xs xl:text-base w-3/4 line-clamp-3">
                 {blog.description}
               </p>

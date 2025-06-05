@@ -29,7 +29,7 @@ const navItemVariants = {
 const ActiveStateOverlay = memo(() => (
   <motion.div
     layoutId="activeNavItem"
-    className="absolute inset-0 border border-dashed border-[#66D1FF]"
+    className="absolute inset-0 border border-dashed border-[#66D1FF] bg-[#66D1FF]/15"
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
@@ -75,9 +75,9 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full flex flex-col">
+    <header className="sticky top-0 z-50 w-full flex flex-col bg-background backdrop-blur-sm overflow-x-hidden">
       <div className="w-full py-2 container flex justify-between items-center border-b-across">
-        <div className="flex gap-4 items-center">
+        <Link href="/">
           <Image
             src="/images/logo.png"
             alt="Dharma's Portfolio"
@@ -85,10 +85,7 @@ const Header = () => {
             height={128}
             className="w-10 h-10 rounded-lg"
           />
-          <p className="text-lg xl:text-2xl text-white font-bold">
-            Dharma&apos;s Portfolio
-          </p>
-        </div>
+        </Link>
 
         <nav className="hidden gap-4 text-white xl:flex">
           {navigationItems.map((item) => (
@@ -116,7 +113,7 @@ const Header = () => {
           </motion.div>
         ) : (
           <motion.div
-          className="xl:hidden"
+            className="xl:hidden"
             key="menu"
             initial={{ rotate: 90, opacity: 0 }}
             animate={{ rotate: 0, opacity: 1 }}

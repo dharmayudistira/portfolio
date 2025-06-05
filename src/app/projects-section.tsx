@@ -1,10 +1,7 @@
-"use client";
-
-import { memo } from "react";
-import { Card, Gap } from "@/components/ui";
+import {  Gap, ProjectCard } from "@/components/ui";
 import { PROJECTS } from "@/lib/projects";
 
-const SectionHeader = memo(() => (
+const SectionHeader = () => (
   <div className="w-full grid grid-cols-6 xl:grid-cols-12">
     <div className="col-span-2 xl:col-span-4">
       <div className="h-full w-full content-end border-r">
@@ -33,28 +30,22 @@ const SectionHeader = memo(() => (
       </div>
     </div>
   </div>
-));
-
-SectionHeader.displayName = "SectionHeader";
-
-const ProjectCard = memo(
-  ({ project }: { project: (typeof PROJECTS)[number] }) => (
-    <Card.Project
-      key={project.key}
-      title={project.title}
-      stacks={project.stacks}
-      linkWeb={project.linkWeb}
-      linkPlayStore={project.linkPlayStore}
-      linkAppStore={project.linkAppStore}
-      projectImageUrl={project.projectImageUrl}
-      showcaseAssetUrl={project.showcaseAssetUrl}
-    />
-  )
 );
 
-ProjectCard.displayName = "ProjectCard";
+const ProjectItem = ({ project }: { project: (typeof PROJECTS)[number] }) => (
+  <ProjectCard
+    key={project.key}
+    title={project.title}
+    stacks={project.stacks}
+    linkWeb={project.linkWeb}
+    linkPlayStore={project.linkPlayStore}
+    linkAppStore={project.linkAppStore}
+    projectImageUrl={project.projectImageUrl}
+    showcaseAssetUrl={project.showcaseAssetUrl}
+  />
+);
 
-const ProjectsSection = memo(() => {
+const ProjectsSection = () => {
   return (
     <section className="w-full flex flex-col">
       <SectionHeader />
@@ -62,13 +53,11 @@ const ProjectsSection = memo(() => {
 
       <div className="bg-secondary grid grid-cols-12 p-2 gap-2 border-b-across">
         {PROJECTS.slice(0, 4).map((project) => (
-          <ProjectCard key={project.key} project={project} />
+          <ProjectItem key={project.key} project={project} />
         ))}
       </div>
     </section>
   );
-});
-
-ProjectsSection.displayName = "ProjectsSection";
+};
 
 export default ProjectsSection;

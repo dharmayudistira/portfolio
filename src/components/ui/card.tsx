@@ -22,8 +22,8 @@ interface TestimonyCardProps extends BaseCardProps {
 }
 
 interface ProjectCardProps extends BaseCardProps {
-  projectImageUrl?: string;
-  showcaseAssetUrl?: string;
+  projectImageUrl: string;
+  showcaseAssetUrl: string;
   title: string;
   stacks: string[];
   linkWeb?: string;
@@ -54,7 +54,7 @@ const Card = ({ title, description, className }: DefaultCardProps) => {
   );
 };
 
-const Service = ({
+const ServiceCard = ({
   title,
   description,
   leading,
@@ -82,9 +82,9 @@ const Service = ({
     </div>
   );
 };
-Service.displayName = "Card.Service";
+ServiceCard.displayName = "Card.Service";
 
-const Testimony = ({
+const TestimonyCard = ({
   name,
   company,
   review,
@@ -108,9 +108,9 @@ const Testimony = ({
     </div>
   );
 };
-Testimony.displayName = "Card.Testimony";
+TestimonyCard.displayName = "Card.Testimony";
 
-const Project = ({
+const ProjectCard = ({
   title,
   stacks,
   linkWeb,
@@ -132,17 +132,15 @@ const Project = ({
     >
       <div className="grid grid-cols-6 border-b">
         <div className="col-span-2 xl:col-span-1 p-2 xl:p-4 flex justify-center items-center border-r">
-          {projectImageUrl ? (
-            <Image
-              src={projectImageUrl}
-              alt={title}
-              width={500}
-              height={500}
-              className="rounded-full object-cover w-[48px] h-[48px] xl:w-[64px] xl:h-[64px] border"
-            />
-          ) : (
-            <div className="w-12 h-12 xl:w-16 xl:h-16 rounded-full border dots-pattern" />
-          )}
+          <Image
+            src={projectImageUrl}
+            alt={title}
+            width={500}
+            height={500}
+            className="rounded-full object-cover w-[48px] h-[48px] xl:w-[64px] xl:h-[64px] border"
+            sizes="(max-width: 768px) 48px, 64px"
+            loading="eager"
+          />
         </div>
 
         <div className="col-span-4 xl:col-span-5 p-4 flex flex-col justify-center">
@@ -166,7 +164,7 @@ const Project = ({
 
             {linkAppStore && (
               <Link href={linkAppStore} target="_blank">
-                <p className="text-primary font-bold text-sm hover:underline">
+                <p className="text-primary font-bold text-xs xl:text-sm hover:underline">
                   App Store
                 </p>
               </Link>
@@ -195,23 +193,23 @@ const Project = ({
             }
           )}
         >
-          {showcaseAssetUrl && (
-            <Image
-              src={showcaseAssetUrl}
-              alt={title}
-              width={1000}
-              height={1000}
-              className="w-full h-full object-top-left object-cover img-zoom"
-            />
-          )}
+          <Image
+            src={showcaseAssetUrl}
+            alt={title}
+            width={1000}
+            height={1000}
+            className="w-full h-full object-top-left object-cover img-zoom rounded-br-lg"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
   );
 };
-Project.displayName = "Card.Project";
+ProjectCard.displayName = "Card.Project";
 
-const Blog = ({ title, description, date, link, className }: BlogCardProps) => {
+const BlogCard = ({ title, description, date, link, className }: BlogCardProps) => {
   return (
     <div className={cn("flex flex-col gap-4 p-4", className)}>
       <div className="w-full flex justify-between">
@@ -223,7 +221,9 @@ const Blog = ({ title, description, date, link, className }: BlogCardProps) => {
 
       <div className="w-full flex flex-col gap-8 justify-between">
         <p className="xl:hidden text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
-        <p className="text-white text-sm xl:text-base xl:w-3/4">{description}</p>
+        <p className="text-white text-sm xl:text-base xl:w-3/4">
+          {description}
+        </p>
 
         <Link className="w-fit" href={link} target="_blank">
           <Button variant="secondary">Read More</Button>
@@ -232,10 +232,6 @@ const Blog = ({ title, description, date, link, className }: BlogCardProps) => {
     </div>
   );
 };
-Blog.displayName = "Card.Blog";
+BlogCard.displayName = "Card.Blog";
 
-Card.Service = Service;
-Card.Testimony = Testimony;
-Card.Project = Project;
-Card.Blog = Blog;
-export default Card;
+export { Card, ServiceCard, TestimonyCard, ProjectCard, BlogCard };

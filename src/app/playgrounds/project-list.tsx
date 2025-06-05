@@ -35,7 +35,9 @@ const ProjectCard = memo(({ project, index, screenSize }: ProjectCardProps) => {
             alt={project.title}
             width={1000}
             height={1000}
-            priority
+            priority={index < 2}
+            loading={index < 2 ? "eager" : "lazy"}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
       </div>
