@@ -1,14 +1,20 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
 interface ImageComparisonProps {
   beforeAsset: string;
   afterAsset: string;
+  sliderColor?: string;
 }
 
-const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
+const ImageComparison = ({
+  beforeAsset,
+  afterAsset,
+  sliderColor = "#66D1FF",
+}: ImageComparisonProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -42,11 +48,11 @@ const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
 
   return (
     <div
-      className="w-full h-full relative touch-none" // touch-none prevents default touch behaviors
+      className="w-full h-full relative touch-none"
       onMouseMove={handleMove}
       onMouseDown={handleStart}
       onMouseUp={handleEnd}
-      onMouseLeave={handleEnd} // Stop dragging when mouse leaves the area
+      onMouseLeave={handleEnd}
       onTouchMove={handleMove}
       onTouchStart={handleStart}
       onTouchEnd={handleEnd}
@@ -77,12 +83,26 @@ const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
       </div>
 
       <div
-        className="absolute top-0 bottom-0 left-0 w-1 bg-[#66D1FF] cursor-ew-resize z-50 rounded-full select-none"
+        className={cn(
+          "absolute top-0 bottom-0 left-0 w-1  cursor-ew-resize z-50 rounded-full select-none",
+          `bg-[${sliderColor}]`
+        )}
         style={{
           left: `calc(${sliderPosition}% - 1px)`,
         }}
       >
-        <div className="bg-[#66D1FF] absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full" />
+        <div
+          className={cn(
+            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full",
+            `bg-[${sliderColor}]`
+          )}
+        />
+        <div
+          className={cn(
+            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full animate-ping",
+            `bg-[${sliderColor}]`
+          )}
+        />
       </div>
     </div>
   );
