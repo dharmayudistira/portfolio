@@ -7,14 +7,9 @@ import { useState } from "react";
 interface ImageComparisonProps {
   beforeAsset: string;
   afterAsset: string;
-  sliderColor?: string;
 }
 
-const ImageComparison = ({
-  beforeAsset,
-  afterAsset,
-  sliderColor = "#66D1FF",
-}: ImageComparisonProps) => {
+const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -84,8 +79,7 @@ const ImageComparison = ({
 
       <div
         className={cn(
-          "absolute top-0 bottom-0 left-0 w-1  cursor-ew-resize z-50 rounded-full select-none",
-          `bg-[${sliderColor}]`
+          "absolute top-0 bottom-0 left-0 w-1  cursor-ew-resize z-50 rounded-full select-none bg-[#66D1FF]"
         )}
         style={{
           left: `calc(${sliderPosition}% - 1px)`,
@@ -93,14 +87,12 @@ const ImageComparison = ({
       >
         <div
           className={cn(
-            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full",
-            `bg-[${sliderColor}]`
+            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full bg-[#66D1FF]"
           )}
         />
         <div
           className={cn(
-            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full animate-ping",
-            `bg-[${sliderColor}]`
+            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full animate-ping bg-[#66D1FF]"
           )}
         />
       </div>
