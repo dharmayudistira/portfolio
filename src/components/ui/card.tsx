@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { OptimizedImage } from "./optimized-image";
 import Link from "next/link";
 import { Button } from ".";
 
@@ -132,7 +132,7 @@ const ProjectCard = ({
     >
       <div className="grid grid-cols-6 border-b">
         <div className="col-span-2 xl:col-span-1 p-2 xl:p-4 flex justify-center items-center border-r">
-          <Image
+          <OptimizedImage
             src={projectImageUrl}
             alt={title}
             width={500}
@@ -140,6 +140,8 @@ const ProjectCard = ({
             className="rounded-full object-cover w-[48px] h-[48px] xl:w-[64px] xl:h-[64px] border"
             sizes="(max-width: 768px) 48px, 64px"
             loading="eager"
+            priority
+            showSkeleton={true}
           />
         </div>
 
@@ -193,7 +195,7 @@ const ProjectCard = ({
             }
           )}
         >
-          <Image
+          <OptimizedImage
             src={showcaseAssetUrl}
             alt={title}
             width={1000}
@@ -201,6 +203,8 @@ const ProjectCard = ({
             className="w-full h-full object-top-left object-cover img-zoom rounded-br-lg"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="lazy"
+            useIntersection={true}
+            showSkeleton={true}
           />
         </div>
       </div>
@@ -209,7 +213,13 @@ const ProjectCard = ({
 };
 ProjectCard.displayName = "Card.Project";
 
-const BlogCard = ({ title, description, date, link, className }: BlogCardProps) => {
+const BlogCard = ({
+  title,
+  description,
+  date,
+  link,
+  className,
+}: BlogCardProps) => {
   return (
     <div className={cn("flex flex-col gap-4 p-4", className)}>
       <div className="w-full flex justify-between">

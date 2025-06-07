@@ -2,7 +2,7 @@
 
 import { PROJECTS } from "@/lib/projects";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { useScreenSize } from "@/hooks/use-screen-size";
 import { memo } from "react";
@@ -29,7 +29,7 @@ const ProjectCard = memo(({ project, index, screenSize }: ProjectCardProps) => {
     >
       <div className="overflow-hidden">
         <div className={cn("p-2 border-b", getBorderClasses(index))}>
-          <Image
+          <OptimizedImage
             className="w-full h-[250px] object-cover rounded-lg img-zoom"
             src={project.showcaseAssetUrl}
             alt={project.title}
@@ -38,6 +38,8 @@ const ProjectCard = memo(({ project, index, screenSize }: ProjectCardProps) => {
             priority={index < 2}
             loading={index < 2 ? "eager" : "lazy"}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            useIntersection={index >= 2}
+            showSkeleton={true}
           />
         </div>
       </div>

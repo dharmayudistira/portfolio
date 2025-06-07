@@ -1,5 +1,5 @@
 import { LiveClock } from "@/components/ui";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 
 interface SocialLink {
@@ -41,13 +41,14 @@ const SocialLinks = () => (
     {socialLinks.map((link) => (
       <Link key={link.alt} href={link.href} target="_blank">
         <div className="border rounded-lg p-1.5 hover:bg-[#42454E]/80 transition-all duration-300 cursor-pointer">
-          <Image
+          <OptimizedImage
             src={link.icon}
             alt={link.alt}
             width={20}
             height={20}
             className="w-5 h-5"
             loading="lazy"
+            showSkeleton={false}
           />
         </div>
       </Link>
@@ -58,7 +59,7 @@ const SocialLinks = () => (
 const HeroSection = () => {
   return (
     <>
-      <div className="w-full h-12 xl:h-24"/>
+      <div className="w-full h-12 xl:h-24" />
 
       <div className="grid grid-cols-12 border-b-across border-t-across">
         <div className="col-span-12 xl:col-span-9 xl:border-r">
@@ -73,7 +74,7 @@ const HeroSection = () => {
             </span>{" "}
             It&apos;s{" "}
             <LiveClock className="inline-block text-secondary-light font-bold" />{" "}
-            here right now.
+            here.
           </p>
 
           <p className="mt-10 border-b xl:border-b-0 text-secondary-light px-2.5 font-code tracking-wide text-xs xl:text-sm w-full xl:w-3/4">
@@ -116,14 +117,15 @@ const HeroSection = () => {
 
         <div className="col-span-12 xl:col-span-3 p-6 flex justify-center items-center dots-pattern">
           <div className="w-full p-2 h-full bg-color border rounded-xl border-dashed border-[#66D1FF] relative">
-            <Image
-              src="/images/profile-picture.png"
+            <OptimizedImage
+              src="/images/profile-picture.jpg"
               alt="Profile"
               width={500}
               height={500}
               className="w-full h-full object-cover rounded-lg"
               priority
               quality={90}
+              showSkeleton={true}
             />
             <SocialLinks />
           </div>

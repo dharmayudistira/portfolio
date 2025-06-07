@@ -1,4 +1,5 @@
 import { BlogCard, Gap } from "@/components/ui";
+import { OptimizedVideo } from "@/components/ui/optimized-video";
 import { BLOGS } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
 
@@ -69,12 +70,14 @@ const BlogsSection = () => {
 
         <div className="col-span-4 border-t xl:border-l bg-secondary p-3">
           <div className="w-full h-full bg-color rounded-lg border">
-            <video
+            <OptimizedVideo
               src="/video/heartbeat.mp4"
               autoPlay
               loop
               muted
               className="w-full h-full object-cover rounded-lg"
+              useIntersection={true}
+              showSkeleton={true}
             />
           </div>
         </div>

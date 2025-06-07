@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconPlus } from "../ui";
 import { motion } from "framer-motion";
 import { memo, useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { IoMenuSharp, IoCloseSharp } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 
@@ -34,12 +33,7 @@ const ActiveStateOverlay = memo(() => (
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.2 }}
-  >
-    <IconPlus className="absolute -top-2 -left-2 w-4 h-4" color="#66D1FF" />
-    <IconPlus className="absolute -bottom-2 -left-2 w-4 h-4" color="#66D1FF" />
-    <IconPlus className="absolute -top-2 -right-2 w-4 h-4" color="#66D1FF" />
-    <IconPlus className="absolute -bottom-2 -right-2 w-4 h-4" color="#66D1FF" />
-  </motion.div>
+  />
 ));
 
 ActiveStateOverlay.displayName = "ActiveStateOverlay";
@@ -78,12 +72,14 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full flex flex-col bg-background backdrop-blur-sm overflow-x-hidden">
       <div className="w-full py-2 container flex justify-between items-center border-b-across">
         <Link href="/">
-          <Image
-            src="/images/logo.png"
+          <OptimizedImage
+            src="/images/logo.webp"
             alt="Dharma's Portfolio"
             width={128}
             height={128}
             className="w-10 h-10 rounded-lg"
+            priority
+            showSkeleton={true}
           />
         </Link>
 

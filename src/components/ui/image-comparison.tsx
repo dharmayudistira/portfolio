@@ -1,8 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { OptimizedImage } from "./optimized-image";
 import { useState } from "react";
+import { RiExpandLeftRightFill } from "react-icons/ri";
+
 
 interface ImageComparisonProps {
   beforeAsset: string;
@@ -53,12 +55,14 @@ const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
       onTouchEnd={handleEnd}
     >
       <div className="w-full h-full relative select-none">
-        <Image
+        <OptimizedImage
           src={beforeAsset}
           width={1000}
           height={1000}
           alt="before"
-          className="w-full h-full object-fill xl:object-contain xl:object-center rounded-lg"
+          className="w-full h-full object-cover xl:object-contain xl:object-center rounded-lg"
+          useIntersection={true}
+          showSkeleton={true}
         />
       </div>
 
@@ -68,12 +72,14 @@ const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
           clipPath: `inset(0 0 0 ${sliderPosition}%)`,
         }}
       >
-        <Image
+        <OptimizedImage
           src={afterAsset}
           width={1000}
           height={1000}
           alt="after"
-          className="w-full h-full object-fill xl:object-contain xl:object-center rounded-lg"
+          className="w-full h-full object-cover xl:object-contain xl:object-center rounded-lg"
+          useIntersection={true}
+          showSkeleton={true}
         />
       </div>
 
@@ -87,12 +93,14 @@ const ImageComparison = ({ beforeAsset, afterAsset }: ImageComparisonProps) => {
       >
         <div
           className={cn(
-            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full bg-[#66D1FF]"
+            "absolute -left-[10px] top-[calc(50%-5px)] w-6 h-6 rounded-full bg-[#66D1FF] z-50 flex items-center justify-center"
           )}
-        />
+        >
+          <RiExpandLeftRightFill className="w-5 h-5 text-secondary" />
+        </div>
         <div
           className={cn(
-            "absolute -left-1 top-[calc(50%-5px)] w-3 h-3 rounded-full animate-ping bg-[#66D1FF]"
+            "absolute -left-[10px] top-[calc(50%-5px)] w-6 h-6 rounded-full animate-ping bg-[#66D1FF]"
           )}
         />
       </div>

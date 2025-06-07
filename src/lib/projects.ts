@@ -22,7 +22,7 @@ export const PROJECTS: Project[] = [
     linkAppStore:
       "https://apps.apple.com/id/app/simpan-reksa-dana-transparan/id6444825882",
     projectImageUrl: "/images/simpan.webp",
-    showcaseAssetUrl: "/images/simpan-showcase.png",
+    showcaseAssetUrl: "/images/simpan-showcase.webp",
   },
   {
     key: "kickavenue",
@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
     linkAppStore:
       "https://apps.apple.com/id/app/kick-avenue-shop-hype-here/id1478394222",
     projectImageUrl: "/images/kick-avenue.webp",
-    showcaseAssetUrl: "/images/kick-avenue-showcase.png",
+    showcaseAssetUrl: "/images/kick-avenue-showcase.webp",
   },
   {
     key: "gcbc",
@@ -43,8 +43,8 @@ export const PROJECTS: Project[] = [
     description: "Resource and knowledge sharing platform",
     stacks: ["NextJS", "ReactQuery"],
     linkWeb: "https://capacity-building.org/",
-    projectImageUrl: "/images/gcbc.png",
-    showcaseAssetUrl: "/images/gcbc-showcase.png",
+    projectImageUrl: "/images/gcbc.webp",
+    showcaseAssetUrl: "/images/gcbc-showcase.webp",
   },
   {
     key: "sukanda",
@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
     description: "National scale B2B online platform",
     stacks: ["NextJS", "ReactQuery"],
     linkWeb: "https://buyer.sukandaonelink.com",
-    projectImageUrl: "/images/sukanda.png",
-    showcaseAssetUrl: "/images/sukanda-showcase.jpeg",
+    projectImageUrl: "/images/sukanda.webp",
+    showcaseAssetUrl: "/images/sukanda-showcase.webp",
   },
 ];

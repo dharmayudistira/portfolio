@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 export type ExperienceItem = {
   companyLogo: string;
@@ -14,42 +14,42 @@ export type ExperienceItem = {
 
 const EXPERIENCE_ITEMS: ExperienceItem[] = [
   {
-    companyLogo: "/images/zog.jpg",
+    companyLogo: "/images/zog.webp",
     companyName: "Zero One Group",
     role: "Product Engineer",
     startDate: "September 2022",
     endDate: "Present",
   },
   {
-    companyLogo: "/images/dicoding.jpg",
+    companyLogo: "/images/dicoding.webp",
     companyName: "Dicoding",
     role: "External Reviewer",
     startDate: "Part-Time / On-Demand",
     endDate: "",
   },
   {
-    companyLogo: "/images/dicoding.jpg",
+    companyLogo: "/images/dicoding.webp",
     companyName: "Kampus Merdeka x Dicoding",
     role: "Multiplatform Graduate",
     startDate: "August 2021",
     endDate: "January 2022",
   },
   {
-    companyLogo: "/images/neurafarm.jpg",
+    companyLogo: "/images/neurafarm.webp",
     companyName: "Neurafarm",
     role: "Software Engineer - Flutter",
     startDate: "June 2021",
     endDate: "September 2021",
   },
   {
-    companyLogo: "/images/bangkit.jpeg",
+    companyLogo: "/images/bangkit.webp",
     companyName: "Bangkit Academy",
     role: "Mobile Development Graduate",
     startDate: "Februari 2021",
     endDate: "July 2021",
   },
   {
-    companyLogo: "/images/dsc.jpg",
+    companyLogo: "/images/dsc.webp",
     companyName: "Google Developer Student Clubs",
     role: "Lead",
     startDate: "August 2019",
@@ -79,7 +79,7 @@ const ExperienceItem = ({
     <div className={cn("grid grid-cols-12", !isLast && "border-b")}>
       <div className="col-span-3 xl:col-span-2 flex items-center justify-center p-3 border-r">
         <div className="p-1 border border-dashed rounded-xl">
-          <Image
+          <OptimizedImage
             src={companyLogo}
             alt={`${companyName} logo`}
             width={40}
@@ -88,6 +88,8 @@ const ExperienceItem = ({
             loading={index === 0 ? "eager" : "lazy"}
             priority={index === 0}
             sizes="40px"
+            useIntersection={index > 0}
+            showSkeleton={true}
           />
         </div>
       </div>

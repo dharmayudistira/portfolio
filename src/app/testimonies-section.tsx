@@ -1,6 +1,6 @@
 import { Gap, TestimonyCard } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 
 interface Testimonial {
   name: string;
@@ -54,7 +54,7 @@ const testimonials: Testimonial[] = [
 ];
 
 const QuoteImage = () => (
-  <Image
+  <OptimizedImage
     src="/icons/quote.png"
     alt="Quotation Mark"
     width={100}
@@ -62,6 +62,7 @@ const QuoteImage = () => (
     priority
     quality={90}
     className="object-contain w-12 h-12 xl:w-24 xl:h-24"
+    showSkeleton={true}
   />
 );
 

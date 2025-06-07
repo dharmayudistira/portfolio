@@ -82,8 +82,8 @@ const ServicesSection = () => {
         <div className="col-span-4">
           <div className="w-full h-64 xl:h-full bg-color rounded-lg border">
             <ImageComparison
-              beforeAsset="/images/web-dev.png"
-              afterAsset="/images/mobile-dev.png"
+              beforeAsset="/images/web-dev.webp"
+              afterAsset="/images/mobile-dev.webp"
             />
           </div>
         </div>
