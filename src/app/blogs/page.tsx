@@ -3,6 +3,11 @@ import Footer from "@/components/layout/footer";
 import HeroSection from "@/components/layout/hero-section";
 import { Gap } from "@/components/ui";
 import BlogList from "./blog-list";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+};
 
 export default function Page() {
   return (

@@ -117,7 +117,7 @@ const ExperienceSection = () => {
           Experience with a variety of Projects and industries.
         </p>
         <p className="text-secondary-light text-sm xl:text-base">
-          Hands-on experience across mobile, web, and desktop — solving
+          Hands-on experience across mobile and web — solving
           problems, building products, and learning along the way.
         </p>
 

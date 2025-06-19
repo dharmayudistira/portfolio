@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <BaseLayout>
       <HeroSection
-        title="Building Scalable Apps for Web, Mobile & Desktop."
+        title="Building Scalable Apps for Web and Mobile."
         description={
           <p className="text-secondary-light text-sm xl:text-xl">
             Hi, I&apos;m{" "}

@@ -2,6 +2,11 @@ import BaseLayout from "@/components/layout/base-layout";
 import { Gap, TechStackRunner } from "@/components/ui";
 import HeroSection from "./hero-section";
 import ExperienceSection from "./experience-section";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'About'
+};
 
 export default function Page() {
   return (

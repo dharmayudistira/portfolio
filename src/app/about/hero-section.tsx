@@ -81,9 +81,9 @@ const HeroSection = () => {
             — a <span className="text-primary">Product Engineer</span> who loves
             turning ideas into clean, useful, and reliable digital products.
             <br />
-            <br />I build for web, mobile, and desktop using stacks like{" "}
+            <br />I build for web, and mobile using stacks like{" "}
             <span className="text-primary">
-              Flutter, Android Native, React/Next.js, and Tauri.
+              Flutter, Android, and React/Next.js.
             </span>{" "}
             From fintech to e-commerce to internal automation, I focus on smooth
             user experiences and solid performance.

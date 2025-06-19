@@ -3,10 +3,10 @@ import { Gap, ImageComparison, ServiceCard } from "@/components/ui";
 const SERVICES = [
   {
     id: "00",
-    title: "Website & Desktop",
-    tech: "ReactJS | NextJS | Tauri | PWA",
+    title: "Website",
+    tech: "ReactJS | NextJS | PWA",
     description:
-      "I build fast, scalable, and modern websites and desktop apps — from sleek landing pages to robust internal platforms. Always optimized for performance and usability.",
+      "I build fast, scalable, and modern website apps — from sleek landing pages to robust internal platforms. Always optimized for performance and usability.",
   },
   {
     id: "01",

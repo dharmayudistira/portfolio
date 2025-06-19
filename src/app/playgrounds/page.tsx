@@ -3,6 +3,11 @@ import HeroSection from "@/components/layout/hero-section";
 import { Gap } from "@/components/ui";
 import ProjectList from "./project-list";
 import Footer from "@/components/layout/footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Playgrounds",
+};
 
 export default function Page() {
   return (
