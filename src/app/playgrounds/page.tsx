@@ -1,8 +1,8 @@
-import BaseLayout from "@/components/layout/base-layout";
+import { BaseLayout } from "@/components/layout";
 import HeroSection from "@/components/layout/hero-section";
 import { Gap } from "@/components/ui";
 import ProjectList from "./project-list";
-import Footer from "@/components/layout/footer";
+import { Footer } from "@/components/layout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

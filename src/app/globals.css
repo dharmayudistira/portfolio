@@ -233,7 +233,6 @@ body {
   }
 }
 
-/* Loading animations */
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -243,77 +242,64 @@ body {
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Loading utility classes */
-.animate-shimmer {
-  animation: shimmer 1.5s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-slide-in {
-  animation: slide-in 0.4s ease-out;
-}
-
-/* Loading overlay styles */
-.loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--color-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-/* Blur placeholder styles */
-.blur-placeholder {
-  filter: blur(10px);
-  transform: scale(1.1);
-  transition: filter 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.blur-placeholder.loaded {
-  filter: blur(0px);
-  transform: scale(1);
-}
-
-/* Smooth transition classes */
-.smooth-transition {
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-.fade-in {
-  opacity: 0;
-  animation: slide-in 0.4s ease-out forwards;
-}
-
 @layer base {
   * {
     border-color: var(--color-secondary);
   }
+}
+
+/* Article styles */
+
+code {
+  @apply rounded p-2 text-xs;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-fira-code);
+}
+
+blockquote {
+  @apply border-l-4 pl-4;
+  border-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.blog-content h1 {
+  @apply text-4xl font-bold;
+  color: #FFFFFF;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-bold;
+  color: #FFFFFF;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-bold;
+  color: #FFFFFF;
+}
+
+.blog-content h4 {
+  @apply text-xl font-bold;
+  color: #FFFFFF;
+}
+
+.blog-content a {
+  @apply underline;
+  color: var(--color-primary);
+}
+
+.blog-content ul {
+  @apply list-disc pl-8;
+  color: var(--color-secondary-light);
+}
+
+.blog-content ol {
+  @apply list-decimal pl-8;
+  color: var(--color-secondary-light);
+}
+
+div[data-node-type="callout"] {
+  @apply flex gap-5 rounded p-4;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
 }

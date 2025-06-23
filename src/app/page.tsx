@@ -1,10 +1,10 @@
-import BaseLayout from "@/components/layout/base-layout";
+import { BaseLayout } from "@/components/layout";
 import ServicesSection from "./services-section";
 import TestimoniesSection from "./testimonies-section";
 import ProjectsSection from "./projects-section";
 import BlogsSection from "./blogs-section";
 import { Gap } from "@/components/ui";
-import Footer from "@/components/layout/footer";
+import { Footer } from "@/components/layout";
 import HeroSection from "@/components/layout/hero-section";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";

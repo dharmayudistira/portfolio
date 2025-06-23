@@ -1,4 +1,4 @@
-import BaseLayout from "@/components/layout/base-layout";
+import { BaseLayout } from "@/components/layout";
 import { Gap, TechStackRunner } from "@/components/ui";
 import HeroSection from "./hero-section";
 import ExperienceSection from "./experience-section";

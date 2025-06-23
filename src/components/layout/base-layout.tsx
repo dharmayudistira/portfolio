@@ -5,7 +5,7 @@ import Header from "./header";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-const BaseLayout = ({ children }: { children: React.ReactNode }) => {
+export const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const screenSize = useScreenSize();
   const pathname = usePathname();
   useSmoothScroll();
@@ -47,5 +47,3 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
-
-export default BaseLayout;

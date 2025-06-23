@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button, Gap } from "../ui";
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="w-full flex flex-col">
       <div className="h-12 xl:h-24 w-full content-end border-b-across">
@@ -46,5 +46,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

@@ -15,3 +15,4 @@ export { OptimizedImage } from "./optimized-image";
 export { OptimizedVideo } from "./optimized-video";
 export { ImageSkeleton, VideoSkeleton, BlurPlaceholder } from "./loading";
 export { InfiniteCube } from "./infinite-cube";
+export { Breadcrumb } from "./breadcrumbs";
