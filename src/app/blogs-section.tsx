@@ -1,5 +1,4 @@
-import { BlogCard, Gap } from "@/components/ui";
-import { OptimizedVideo } from "@/components/ui/optimized-video";
+import { BlogCard, Gap, InfiniteCube } from "@/components/ui";
 import { BLOGS } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
 
@@ -69,15 +68,16 @@ const BlogsSection = () => {
         </div>
 
         <div className="col-span-4 border-t xl:border-l bg-secondary p-3">
-          <div className="w-full h-full bg-color rounded-lg border">
-            <OptimizedVideo
-              src="/video/heartbeat.mp4"
-              autoPlay
-              loop
-              muted
-              className="w-full h-full object-cover rounded-lg"
-              useIntersection={true}
-              showSkeleton={true}
+          <div className="relative w-full h-full bg-color rounded-lg border p-2 overflow-hidden">
+            <InfiniteCube
+              gridSize={8}
+              maxAngle={90}
+              radius={2}
+              borderStyle="2px dashed #66D1FF"
+              faceColor="#1E1F29"
+              rippleColor="#66D1FF"
+              rippleSpeed={1}
+              rippleOnClick={true}
             />
           </div>
         </div>

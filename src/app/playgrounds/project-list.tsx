@@ -4,7 +4,7 @@ import { PROJECTS } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
-import { useScreenSize } from "@/hooks/use-screen-size";
+import { useScreenSize } from "@/hooks";
 import { memo } from "react";
 
 interface ProjectCardProps {

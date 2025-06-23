@@ -14,3 +14,4 @@ export { default as ImageComparison } from "./image-comparison";
 export { OptimizedImage } from "./optimized-image";
 export { OptimizedVideo } from "./optimized-video";
 export { ImageSkeleton, VideoSkeleton, BlurPlaceholder } from "./loading";
+export { InfiniteCube } from "./infinite-cube";

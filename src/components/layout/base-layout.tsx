@@ -1,7 +1,6 @@
 "use client";
 
-import { useScreenSize } from "@/hooks";
-import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import { useScreenSize, useSmoothScroll } from "@/hooks";
 import Header from "./header";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
