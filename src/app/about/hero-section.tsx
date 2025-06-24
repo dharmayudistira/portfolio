@@ -30,9 +30,9 @@ const socialLinks: SocialLink[] = [
     alt: "LinkedIn",
   },
   {
-    href: "https://medium.com/@dharmayudistira2000",
-    icon: "/icons/medium.png",
-    alt: "Medium",
+    href: "https://hashnode.com/@dharmayudistira",
+    icon: "/icons/hashnode.png",
+    alt: "Hashnode",
   },
 ];
 
