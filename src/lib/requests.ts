@@ -25,6 +25,7 @@ export async function getPosts({ first = 9, pageParam = "" }: GetPostsArgs) {
               title
               subtitle
               slug
+              views
               readTimeInMinutes
               publishedAt
               tags {
@@ -72,6 +73,7 @@ export async function getPostBySlug(slug: string) {
           subtitle
           readTimeInMinutes
           publishedAt
+          views
           coverImage {
             url
           }

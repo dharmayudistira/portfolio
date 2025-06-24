@@ -16,19 +16,6 @@ export const Footer = () => {
         </p>
       </div>
 
-      <div className="h-12 w-full content-end border-b-across">
-        <p className="text-secondary px-2 font-code tracking-wide text-xs xl:text-sm">
-          text-secondary font-bold
-        </p>
-      </div>
-
-      <div className="w-full px-2 border-b-across">
-        <p className="text-secondary-light text-sm xl:text-xl">
-          Feel free to drop me a line with project details. It would be a
-          pleasure to help you with your website!
-        </p>
-      </div>
-
       <Gap size="sm" />
 
       <Link href="/about" className="px-2 border-b-across">

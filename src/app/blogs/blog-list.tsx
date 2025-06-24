@@ -67,12 +67,16 @@ const BlogList = () => {
                     </p>
 
                     <div className="flex items-center gap-2">
-                      <p className="text-secondary-light font-code text-xs">
+                      <p className="text-secondary-light mt-[2px] font-code text-sm">
                         {formattedDate}
                       </p>
                       <p className="text-primary">・</p>
                       <p className="text-secondary-light text-sm">
                         {postData.readTimeInMinutes} mins read
+                      </p>
+                      <p className="text-primary">・</p>
+                      <p className="text-secondary-light text-sm">
+                        {postData.views} views
                       </p>
                     </div>
 

@@ -60,12 +60,16 @@ export const BlogContent = ({ slug }: { slug: string }) => {
             </div>
 
             <div className="mt-2 flex items-center gap-2">
-              <p className="text-secondary-light font-code text-xs">
+              <p className="text-secondary-light mt-[2px] font-code text-sm">
                 {formatDate(data.publishedAt)}
               </p>
               <p className="text-primary">・</p>
               <p className="text-secondary-light text-sm">
                 {data.readTimeInMinutes} mins read
+              </p>
+              <p className="text-primary">・</p>
+              <p className="text-secondary-light text-sm">
+                {data.views} views
               </p>
             </div>
 

@@ -16,6 +16,7 @@ export type PostMetadata = {
   slug: string;
   publishedAt: string;
   tags: Tag[];
+  views: number;
   content: {
     text: string;
   };
@@ -60,6 +61,7 @@ export type GetPostBySlugResponse = {
       readTimeInMinutes: number;
       publishedAt: string;
       tags: Tag[];
+      views: number;
       coverImage: {
         url: string;
       };
