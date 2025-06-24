@@ -112,6 +112,8 @@ const HeroSection = () => {
             , I&apos;m helping shape digital products that make an impact. When
             I&apos;m not coding, I&apos;m probably mentoring, learning, or
             building something just for fun.
+            <br />
+            <br />
           </p>
         </div>
 

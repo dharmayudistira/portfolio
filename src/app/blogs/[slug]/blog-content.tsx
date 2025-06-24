@@ -68,16 +68,14 @@ export const BlogContent = ({ slug }: { slug: string }) => {
                 {data.readTimeInMinutes} mins read
               </p>
               <p className="text-primary">・</p>
-              <p className="text-secondary-light text-sm">
-                {data.views} views
-              </p>
+              <p className="text-secondary-light text-sm">{data.views} views</p>
             </div>
 
             <p className="mt-4 text-secondary-light text-sm">{data.subtitle}</p>
 
             <p className="mt-8 text-secondary-light text-sm">Tags :</p>
 
-            <div className="mt-2 flex items-center gap-2">
+            <div className="mt-2 flex flex-wrap items-center gap-2">
               {data.tags.map((tag) => (
                 <p
                   key={tag.id}
@@ -91,7 +89,7 @@ export const BlogContent = ({ slug }: { slug: string }) => {
         </div>
 
         <div
-          className="blog-content col-span-12 xl:col-span-9 xl:border-l p-4 text-lg text-secondary-light flex flex-col gap-5"
+          className="blog-content col-span-12 xl:col-span-9 xl:border-l p-4 sm:text-sm xl:text-lg text-secondary-light flex flex-col gap-5"
           dangerouslySetInnerHTML={{ __html: data!.content.html }}
         />
       </div>

@@ -93,4 +93,4 @@ export function BlogsSection() {
       </div>
     </section>
   );
-};
+}
