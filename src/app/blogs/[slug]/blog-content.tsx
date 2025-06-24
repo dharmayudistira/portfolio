@@ -87,7 +87,7 @@ export const BlogContent = ({ slug }: { slug: string }) => {
         </div>
 
         <div
-          className="blog-content col-span-9 border-l p-4 text-lg text-secondary-light flex flex-col gap-5"
+          className="blog-content col-span-12 xl:col-span-9 xl:border-l p-4 text-lg text-secondary-light flex flex-col gap-5"
           dangerouslySetInnerHTML={{ __html: data!.content.html }}
         />
       </div>

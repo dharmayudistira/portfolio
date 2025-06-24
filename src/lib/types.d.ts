@@ -73,3 +73,19 @@ export type GetPostBySlugResponse = {
     };
   };
 };
+
+export type FeaturedPostMetadata = PostMetadata & {
+  views: number;
+  featured: boolean;
+};
+
+type GetFeaturedPostsResponse = {
+  publication: {
+    posts: {
+      edges: {
+        node: FeaturedPostMetadata;
+        cursor: string;
+      }[];
+    };
+  };
+};

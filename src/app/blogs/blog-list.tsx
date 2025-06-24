@@ -49,7 +49,7 @@ const BlogList = () => {
 
           return (
             <div key={post.node.slug} className="grid w-full">
-              <div className="grid grid-cols-12 border-b-across gap-4 xl:gap-0">
+              <div className="grid grid-cols-12 gap-4 xl:gap-0">
                 <div className="col-span-12 xl:col-span-3 xl:border-r p-2">
                   <OptimizedImage
                     src={postData.coverImage?.url || ""}
@@ -99,8 +99,8 @@ const BlogList = () => {
 const CustomGap = () => {
   return (
     <>
-      <div className="col-span-12 xl:col-span-3 xl:border-r border-t-across h-10" />
-      <div className="col-span-12 xl:col-span-9 " />
+      <div className="col-span-12 xl:col-span-3 h-10 xl:border-t-0 border-t-across" />
+      <div className="col-span-12 xl:col-span-9 border-b-across" />
     </>
   );
 };

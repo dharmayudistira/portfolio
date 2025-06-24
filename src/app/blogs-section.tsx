@@ -1,6 +1,10 @@
+"use client";
+
 import { BlogCard, Gap, InfiniteCube } from "@/components/ui";
-import { BLOGS } from "@/lib/blogs";
-import { cn } from "@/lib/utils";
+import { getFeaturedPosts } from "@/lib/requests";
+import { FeaturedPostMetadata } from "@/lib/types";
+import { cn, formatDate } from "@/lib/utils";
+import { useQuery } from "@tanstack/react-query";
 
 const SectionHeader = () => (
   <div className="w-full grid grid-cols-6 xl:grid-cols-12">
@@ -37,20 +41,25 @@ const BlogItem = ({
   blog,
   isLast,
 }: {
-  blog: (typeof BLOGS)[number];
+  blog: FeaturedPostMetadata;
   isLast: boolean;
 }) => (
   <BlogCard
     key={blog.id}
     className={cn(!isLast && "border-b")}
     title={blog.title}
-    description={blog.description}
-    date={blog.date}
-    link={blog.link}
+    description={blog.subtitle || ""}
+    date={formatDate(blog.publishedAt)}
+    link={`/blogs/${blog.slug}`}
   />
 );
 
-const BlogsSection = () => {
+export function BlogsSection() {
+  const { data } = useQuery({
+    queryKey: ["featuredPosts"],
+    queryFn: getFeaturedPosts,
+  });
+
   return (
     <section className="w-full flex flex-col">
       <SectionHeader />
@@ -58,11 +67,11 @@ const BlogsSection = () => {
 
       <div className="w-full flex flex-col xl:grid xl:grid-cols-12 border-b-across">
         <div className="col-span-8 space-y-4">
-          {BLOGS.slice(0, 2).map((blog, index) => (
+          {data?.map((blog, index) => (
             <BlogItem
               key={blog.id}
               blog={blog}
-              isLast={index === BLOGS.length - 1}
+              isLast={index === data.length - 1}
             />
           ))}
         </div>
@@ -85,5 +94,3 @@ const BlogsSection = () => {
     </section>
   );
 };
-
-export default BlogsSection;
