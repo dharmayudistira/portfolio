@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Dharma's Portfolio",
   },
   description:
-    "I'm a passionate Product Engineer specializing in building high-performance, scalable web and applications . Explore my projects and let's build something amazing together.",
+    "I'm a passionate Product Engineer specializing in building high-performance, scalable web and mobile applications. Explore my projects and let's build something amazing together.",
 };
 
 export default function RootLayout({
