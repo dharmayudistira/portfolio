@@ -65,7 +65,7 @@ export function BlogsSection() {
       <SectionHeader />
       <Gap size="sm" pattern="diagonal" />
 
-      <div className="w-full flex flex-col xl:grid xl:grid-cols-12 border-b-across">
+      <div className="w-full h-full flex flex-col xl:grid xl:grid-cols-12 border-b-across">
         <div className="col-span-8 space-y-4">
           {data?.map((blog, index) => (
             <BlogItem

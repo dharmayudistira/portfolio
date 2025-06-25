@@ -221,7 +221,7 @@ const BlogCard = ({
   className,
 }: BlogCardProps) => {
   return (
-    <div className={cn("flex flex-col h-full gap-4 p-4", className)}>
+    <div className={cn("flex flex-col p-4", className)}>
       <div className="w-full flex justify-between">
         <p className="text-primary font-bold text-lg xl:text-2xl xl:w-3/4">
           {title}
@@ -229,15 +229,13 @@ const BlogCard = ({
         <p className="hidden xl:block text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
       </div>
 
-      <div className="w-full flex flex-col gap-8 xl:gap-0 h-full justify-between">
-        <div className="flex flex-col gap-8">
-          <p className="xl:hidden text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
-          <p className="text-white text-sm xl:text-base xl:w-3/4 xl:mt-4">
-            {description}
-          </p>
-        </div>
+      <div className="mt-4 w-full flex flex-col gap-8 xl:gap-0 h-full ">
+        <p className="xl:hidden text-secondary-light font-code text-xs xl:text-sm">{`[ ${date} ]`}</p>
+        <p className="text-white text-sm xl:text-base xl:w-3/4">
+          {description}
+        </p>
 
-        <Link className="w-fit" href={link}>
+        <Link className="mt-8 w-fit" href={link}>
           <Button variant="secondary">Read More</Button>
         </Link>
       </div>
