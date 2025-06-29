@@ -117,12 +117,21 @@ const BlogList = ({ initialPosts }: BlogListProps) => {
         );
       })}
 
-      {hasMore && (
+      {hasMore ? (
         <div className="flex justify-center mt-8">
           <Button variant="secondary" onClick={loadMore} disabled={loading}>
             {loading ? "Loading..." : "Load More"}
           </Button>
         </div>
+      ) : (
+        !hasMore &&
+        posts.length > 9 && (
+          <div className="flex justify-center mt-8 pb-8 border-b-across">
+            <p className="text-secondary-light text-sm">
+              You have reached the end 🎉
+            </p>
+          </div>
+        )
       )}
     </div>
   );
