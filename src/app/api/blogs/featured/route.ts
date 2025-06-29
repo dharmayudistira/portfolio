@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { fetchFeaturedPosts } from "@/lib/hashnode";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const featuredPosts = await fetchFeaturedPosts();
 
