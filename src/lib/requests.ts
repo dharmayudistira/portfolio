@@ -1,21 +1,16 @@
-import request, { gql } from "graphql-request";
-import {
-  GetPostBySlugResponse,
-  GetPostsArgs,
-  GetPostsResponse,
-  GetFeaturedPostsResponse,
-  FeaturedPostMetadata,
-} from "./types";
+import { cache } from "react";
+import { GetPostsArgs, FeaturedPostMetadata } from "./types";
 
 const endpoint = process.env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const publicationId = process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
 
-export async function getPosts({ first = 9, pageParam = "" }: GetPostsArgs) {
-  if (!endpoint || !publicationId) {
-    throw new Error("Missing Hashnode environment variables");
-  }
+export const getPosts = cache(
+  async ({ first = 9, pageParam = "" }: GetPostsArgs) => {
+    if (!endpoint || !publicationId) {
+      throw new Error("Missing Hashnode environment variables");
+    }
 
-  const query = gql`
+    const query = `
     query getPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
       publication(id: $publicationId) {
         posts(first: $first, after: $after) {
@@ -51,21 +46,41 @@ export async function getPosts({ first = 9, pageParam = "" }: GetPostsArgs) {
     }
   `;
 
-  const response = await request<GetPostsResponse>(endpoint, query, {
-    publicationId,
-    first,
-    after: pageParam,
-  });
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables: {
+          publicationId,
+          first,
+          after: pageParam,
+        },
+      }),
+    });
 
-  return response.publication.posts.edges;
-}
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-export async function getPostBySlug(slug: string) {
+    const data = await response.json();
+
+    if (data.errors) {
+      throw new Error(data.errors[0].message);
+    }
+
+    return data.data.publication.posts.edges;
+  }
+);
+
+export const getPostBySlug = cache(async (slug: string) => {
   if (!endpoint || !publicationId) {
     throw new Error("Missing Hashnode environment variables");
   }
 
-  const query = gql`
+  const query = `
     query getPostBySlug($publicationId: ObjectId!, $slug: String!) {
       publication(id: $publicationId) {
         post(slug: $slug) {
@@ -94,20 +109,40 @@ export async function getPostBySlug(slug: string) {
     }
   `;
 
-  const response = await request<GetPostBySlugResponse>(endpoint, query, {
-    publicationId,
-    slug,
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query,
+      variables: {
+        publicationId,
+        slug,
+      },
+    }),
   });
 
-  return response.publication.post;
-}
-
-export async function getFeaturedPosts(): Promise<FeaturedPostMetadata[]> {
-  if (!endpoint || !publicationId) {
-    throw new Error("Missing Hashnode environment variables");
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const query = gql`
+  const data = await response.json();
+
+  if (data.errors) {
+    throw new Error(data.errors[0].message);
+  }
+
+  return data.data.publication.post;
+});
+
+export const getFeaturedPosts = cache(
+  async (): Promise<FeaturedPostMetadata[]> => {
+    if (!endpoint || !publicationId) {
+      throw new Error("Missing Hashnode environment variables");
+    }
+
+    const query = `
     query getFeaturedPosts($publicationId: ObjectId!) {
       publication(id: $publicationId) {
         posts(first: 50) {
@@ -144,14 +179,37 @@ export async function getFeaturedPosts(): Promise<FeaturedPostMetadata[]> {
     }
   `;
 
-  const response = await request<GetFeaturedPostsResponse>(endpoint, query, {
-    publicationId,
-  });
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables: {
+          publicationId,
+        },
+      }),
+    });
 
-  const featuredPosts = response.publication.posts.edges
-    .map((edge) => edge.node)
-    .sort((a, b) => (b.views || 0) - (a.views || 0))
-    .slice(0, 3);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-  return featuredPosts;
-}
+    const data = await response.json();
+
+    if (data.errors) {
+      throw new Error(data.errors[0].message);
+    }
+
+    const featuredPosts = data.data.publication.posts.edges
+      .map((edge: { node: FeaturedPostMetadata }) => edge.node)
+      .sort(
+        (a: FeaturedPostMetadata, b: FeaturedPostMetadata) =>
+          (b.views || 0) - (a.views || 0)
+      )
+      .slice(0, 3);
+
+    return featuredPosts;
+  }
+);

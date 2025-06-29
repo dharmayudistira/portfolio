@@ -1,5 +1,3 @@
-import type { QueryFunctionContext } from "@tanstack/react-query";
-
 export type PublicationName = {
   publication: {
     title: string;
@@ -48,10 +46,10 @@ type GetPostsResponse = {
 
 type GetPostsFunctionArgs = {
   first: number;
-  after: string;
+  pageParam: string;
 };
 
-export type GetPostsArgs = QueryFunctionContext & GetPostsArgs;
+export type GetPostsArgs = GetPostsFunctionArgs;
 
 export type GetPostBySlugResponse = {
   publication: {

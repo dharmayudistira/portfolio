@@ -1,10 +1,5 @@
 import { BaseLayout, Footer } from "@/components/layout";
 import { getPostBySlug } from "@/lib/requests";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
 import { BlogContent } from "./blog-content";
 import { Gap } from "@/components/ui";
 
@@ -28,18 +23,11 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const param = await params;
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ["blog", param.slug],
-    queryFn: () => getPostBySlug(param.slug),
-  });
+  const post = await getPostBySlug(param.slug);
 
   return (
     <BaseLayout>
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <BlogContent slug={param.slug} />
-      </HydrationBoundary>
+      <BlogContent post={post} />
       <Gap size="lg" pattern="dots" />
       <Footer />
     </BaseLayout>

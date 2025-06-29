@@ -8,20 +8,10 @@ import { Footer } from "@/components/layout";
 import HeroSection from "@/components/layout/hero-section";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-} from "@tanstack/react-query";
 import { getFeaturedPosts } from "@/lib/requests";
 
 export default async function Page() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery({
-    queryKey: ["featuredPosts"],
-    queryFn: getFeaturedPosts,
-  });
+  const featuredPosts = await getFeaturedPosts();
 
   return (
     <BaseLayout>
@@ -51,9 +41,7 @@ export default async function Page() {
       <Gap size="lg" />
       <ProjectsSection />
       <Gap size="lg" />
-      <HydrationBoundary state={dehydrate(queryClient)}>
-        <BlogsSection />
-      </HydrationBoundary>
+      <BlogsSection featuredPosts={featuredPosts} />
       <Gap size="lg" />
       <TestimoniesSection />
       <Gap size="lg" pattern="diagonal" />

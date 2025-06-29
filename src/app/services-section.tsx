@@ -6,14 +6,14 @@ const SERVICES = [
     title: "Website",
     tech: "ReactJS | NextJS | PWA",
     description:
-      "I build fast, scalable, and modern website apps — from sleek landing pages to robust internal platforms. Always optimized for performance and usability.",
+      "I build fast, scalable, and modern website apps - from sleek landing pages to robust internal platforms. Always optimized for performance and usability.",
   },
   {
     id: "01",
     title: "No-code Development",
     tech: "Webflow | Framer",
     description:
-      "Need to launch fast? I use no-code tools to build clean, responsive sites — perfect for startups, portfolios, and MVPs — without sacrificing quality.",
+      "Need to launch fast? I use no-code tools to build clean, responsive sites - perfect for startups, portfolios, and MVPs — without sacrificing quality.",
   },
   {
     id: "02",
