@@ -1,16 +1,20 @@
-import { cache } from "react";
-import { GetPostsArgs, FeaturedPostMetadata } from "./types";
+import { FeaturedPostMetadata } from "./types";
 
 const endpoint = process.env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const publicationId = process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
 
-export const getPosts = cache(
-  async ({ first = 9, pageParam = "" }: GetPostsArgs) => {
-    if (!endpoint || !publicationId) {
-      throw new Error("Missing Hashnode environment variables");
-    }
+export async function fetchPosts({
+  first = 9,
+  after = "",
+}: {
+  first?: number;
+  after?: string;
+}) {
+  if (!endpoint || !publicationId) {
+    throw new Error("Missing Hashnode environment variables");
+  }
 
-    const query = `
+  const query = `
     query getPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
       publication(id: $publicationId) {
         posts(first: $first, after: $after) {
@@ -46,36 +50,36 @@ export const getPosts = cache(
     }
   `;
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query,
+      variables: {
+        publicationId,
+        first,
+        after,
       },
-      body: JSON.stringify({
-        query,
-        variables: {
-          publicationId,
-          first,
-          after: pageParam,
-        },
-      }),
-    });
+    }),
+    cache: "no-store",
+  });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (data.errors) {
-      throw new Error(data.errors[0].message);
-    }
-
-    return data.data.publication.posts.edges;
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
-);
 
-export const getPostBySlug = cache(async (slug: string) => {
+  const data = await response.json();
+
+  if (data.errors) {
+    throw new Error(data.errors[0].message);
+  }
+
+  return data.data.publication.posts.edges;
+}
+
+export async function fetchPostBySlug(slug: string) {
   if (!endpoint || !publicationId) {
     throw new Error("Missing Hashnode environment variables");
   }
@@ -121,6 +125,7 @@ export const getPostBySlug = cache(async (slug: string) => {
         slug,
       },
     }),
+    cache: "no-store",
   });
 
   if (!response.ok) {
@@ -134,15 +139,14 @@ export const getPostBySlug = cache(async (slug: string) => {
   }
 
   return data.data.publication.post;
-});
+}
 
-export const getFeaturedPosts = cache(
-  async (): Promise<FeaturedPostMetadata[]> => {
-    if (!endpoint || !publicationId) {
-      throw new Error("Missing Hashnode environment variables");
-    }
+export async function fetchFeaturedPosts() {
+  if (!endpoint || !publicationId) {
+    throw new Error("Missing Hashnode environment variables");
+  }
 
-    const query = `
+  const query = `
     query getFeaturedPosts($publicationId: ObjectId!) {
       publication(id: $publicationId) {
         posts(first: 50) {
@@ -179,37 +183,37 @@ export const getFeaturedPosts = cache(
     }
   `;
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query,
+      variables: {
+        publicationId,
       },
-      body: JSON.stringify({
-        query,
-        variables: {
-          publicationId,
-        },
-      }),
-    });
+    }),
+    cache: "no-store",
+  });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (data.errors) {
-      throw new Error(data.errors[0].message);
-    }
-
-    const featuredPosts = data.data.publication.posts.edges
-      .map((edge: { node: FeaturedPostMetadata }) => edge.node)
-      .sort(
-        (a: FeaturedPostMetadata, b: FeaturedPostMetadata) =>
-          (b.views || 0) - (a.views || 0)
-      )
-      .slice(0, 3);
-
-    return featuredPosts;
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
-);
+
+  const data = await response.json();
+
+  if (data.errors) {
+    throw new Error(data.errors[0].message);
+  }
+
+  const featuredPosts = data.data.publication.posts.edges
+    .map((edge: { node: FeaturedPostMetadata }) => edge.node)
+    .sort(
+      (a: FeaturedPostMetadata, b: FeaturedPostMetadata) =>
+        (b.views || 0) - (a.views || 0)
+    )
+    .slice(0, 3);
+
+  return featuredPosts;
+}

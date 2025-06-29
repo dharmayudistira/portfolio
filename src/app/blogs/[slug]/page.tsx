@@ -1,5 +1,5 @@
 import { BaseLayout, Footer } from "@/components/layout";
-import { getPostBySlug } from "@/lib/requests";
+import { fetchPostBySlug } from "@/lib/hashnode";
 import { BlogContent } from "./blog-content";
 import { Gap } from "@/components/ui";
 
@@ -9,7 +9,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const param = await params;
-  const post = await getPostBySlug(param.slug);
+  const post = await fetchPostBySlug(param.slug);
 
   return {
     title: post.title,
@@ -23,7 +23,7 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const param = await params;
-  const post = await getPostBySlug(param.slug);
+  const post = await fetchPostBySlug(param.slug);
 
   return (
     <BaseLayout>

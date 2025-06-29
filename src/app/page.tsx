@@ -8,10 +8,10 @@ import { Footer } from "@/components/layout";
 import HeroSection from "@/components/layout/hero-section";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { getFeaturedPosts } from "@/lib/requests";
+import { fetchFeaturedPosts } from "@/lib/hashnode";
 
 export default async function Page() {
-  const featuredPosts = await getFeaturedPosts();
+  const featuredPosts = await fetchFeaturedPosts();
 
   return (
     <BaseLayout>

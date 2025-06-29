@@ -1,11 +1,11 @@
 "use client";
 
 import { Button, OptimizedImage } from "@/components/ui";
-import { getPosts } from "@/lib/requests";
 import { formatDate } from "@/lib/utils";
 import { useState } from "react";
 import Link from "next/link";
 import { PostMetadata } from "@/lib/types";
+import { fetchPosts } from "@/lib/hashnode";
 
 interface BlogListProps {
   initialPosts: { node: PostMetadata; cursor: string }[];
@@ -22,9 +22,9 @@ const BlogList = ({ initialPosts }: BlogListProps) => {
     setLoading(true);
     try {
       const lastPost = posts[posts.length - 1];
-      const newPosts = await getPosts({
+      const newPosts = await fetchPosts({
         first: 9,
-        pageParam: lastPost.cursor,
+        after: lastPost.cursor,
       });
 
       if (newPosts.length < 9) {
@@ -117,7 +117,7 @@ const BlogList = ({ initialPosts }: BlogListProps) => {
         );
       })}
 
-      {hasMore ? (
+      {hasMore && posts.length > 9 ? (
         <div className="flex justify-center mt-8">
           <Button variant="secondary" onClick={loadMore} disabled={loading}>
             {loading ? "Loading..." : "Load More"}

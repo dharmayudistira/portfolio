@@ -64,7 +64,7 @@ export function BlogsSection({
 
       <div className="w-full h-full flex flex-col xl:grid xl:grid-cols-12 border-b-across">
         <div className="col-span-8 space-y-4">
-          {featuredPosts?.map((blog, index) => (
+          {featuredPosts?.map((blog: FeaturedPostMetadata, index: number) => (
             <BlogItem
               key={blog.id}
               blog={blog}

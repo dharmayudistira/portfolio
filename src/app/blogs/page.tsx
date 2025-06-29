@@ -4,14 +4,14 @@ import HeroSection from "@/components/layout/hero-section";
 import { Gap } from "@/components/ui";
 import BlogList from "./blog-list";
 import { Metadata } from "next";
-import { getPosts } from "@/lib/requests";
+import { fetchPosts } from "@/lib/hashnode";
 
 export const metadata: Metadata = {
   title: "Blogs",
 };
 
 export default async function Page() {
-  const initialPosts = await getPosts({ first: 9, pageParam: "" });
+  const initialPosts = await fetchPosts({ first: 9, after: "" });
 
   return (
     <BaseLayout>
