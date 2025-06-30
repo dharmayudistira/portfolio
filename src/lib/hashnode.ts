@@ -213,7 +213,7 @@ export async function fetchFeaturedPosts() {
       (a: FeaturedPostMetadata, b: FeaturedPostMetadata) =>
         (b.views || 0) - (a.views || 0)
     )
-    .slice(0, 3);
+    .slice(0, 2);
 
   return featuredPosts;
 }

@@ -251,7 +251,18 @@ body {
 /* Article styles */
 
 code {
-  @apply rounded p-2 text-xs;
+  @apply rounded text-xs;
+  padding: 0.125rem;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-fira-code);
+}
+
+.blog-content pre code {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
   background-color: var(--color-secondary);
   color: var(--color-primary);
   font-family: var(--font-fira-code);
